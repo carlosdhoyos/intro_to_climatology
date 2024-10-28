@@ -182,7 +182,6 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignments</a></li>
@@ -340,7 +339,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables">Deliverables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-topics-for-assignments">Potential Topics for Assignments</a></li>
 </ul>
             </nav>
         </div>
@@ -356,60 +354,52 @@ document.write(`
 <h1>Assignments<a class="headerlink" href="#assignments" title="Link to this heading">#</a></h1>
 <section id="homework-1">
 <h2>Homework 1:<a class="headerlink" href="#homework-1" title="Link to this heading">#</a></h2>
-<p>In this assignment, you will explore recent advancements and challenges in climate modeling by reading the article <em>The future of climate modeling</em> by Tapio Schneider et al. <span id="id1">[<a class="reference internal" href="bibliography.html#id5" title="Tapio Schneider, Swadhin K. Behera, Giulio Boccaletti, Clara Deser, Kerry Emanuel, Raffaele Ferrari, L. Ruby Leung, Ning Lin, A. R. Ravishankara, and Bjorn Stevens. The future of climate modeling. Nature Climate Change, 13:519-527, 2023. URL: https://www.nature.com/articles/s41558-023-01769-3, doi:10.1038/s41558-023-01769-3.">SBB+23</a>]</span>. Additionally, you will choose a second article related to this topic to broaden your understanding of the current state of climate modeling and the integration of AI.</p>
-<p>This article, <em>The future of climate modeling</em>, discusses the current state and future directions of climate modeling. It emphasizes the challenges that traditional models face in accurately simulating climate processes due to limitations in computational resources and data resolution. The authors argue for the integration of advanced machine learning techniques, including AI-driven parameterizations, to improve model accuracy and efficiency. They highlight the need for global collaborations and the development of open-source platforms to accelerate advancements in climate modeling, addressing both scientific and societal needs in the face of climate change <span id="id2">[<a class="reference internal" href="bibliography.html#id5" title="Tapio Schneider, Swadhin K. Behera, Giulio Boccaletti, Clara Deser, Kerry Emanuel, Raffaele Ferrari, L. Ruby Leung, Ning Lin, A. R. Ravishankara, and Bjorn Stevens. The future of climate modeling. Nature Climate Change, 13:519-527, 2023. URL: https://www.nature.com/articles/s41558-023-01769-3, doi:10.1038/s41558-023-01769-3.">SBB+23</a>]</span>.</p>
+<p>In this assignment, you will delve into foundational concepts in climatology by reading <strong>Chapter 1 of <em>Global Physical Climatology</em> by Dennis Hartmann</strong>. This chapter introduces key components of the Earth’s climate system and provides foundational knowledge for understanding atmospheric processes and energy balance.</p>
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><strong>Read the Primary Article</strong><br />
-Read <em>The future of climate modeling</em> by Tapio Schneider et al., which discusses the limitations of traditional climate models and suggests ways AI and machine learning can help improve model accuracy and efficiency.</p></li>
-<li><p><strong>Select a Secondary Article</strong><br />
-Choose one of the articles that either:</p>
+<ol class="arabic">
+<li><p><strong>Read Chapter 1 in Hartmann</strong></p>
 <ul class="simple">
-<li><p>Is cited within the primary article, or</p></li>
-<li><p>Cites the primary article.</p></li>
+<li><p>Read the first chapter thoroughly, focusing on the principles of Earth’s energy balance, the structure of the atmosphere, and the components of the climate system.</p></li>
+<li><p>Pay special attention to the figures in this chapter, as they visually represent core concepts that we will analyze in this assignment.</p></li>
 </ul>
 </li>
-</ol>
-<p>You can search for related articles that have cited this work on Google Scholar: <a class="reference external" href="https://scholar.google.com/scholar?cites=9155263179351258030&amp;amp;as_sdt=2005&amp;amp;sciodt=0,5&amp;amp;hl=es">Harnessing AI and computing to advance climate modelling and prediction</a>.</p>
-<ol class="arabic" start="3">
-<li><p><strong>High-Level Reading of the Secondary Article</strong><br />
-Read the second article at a high level. Focus on understanding the key accomplishments, methods, data used, and main challenges or criticisms discussed in the article. This is a preliminary identification task, so don’t worry about understanding every technical detail.</p></li>
-<li><p><strong>Presentation Preparation</strong><br />
-Create a 4-slide presentation summarizing your findings. Each slide should address the following points:</p>
+<li><p><strong>Reconstruct Figures Using NCEP/NCAR Reanalysis Data</strong></p>
 <ul class="simple">
-<li><p><strong>Slide 1</strong>: Summary of the primary article.</p></li>
-<li><p><strong>Slide 2</strong>: The most important accomplishments and contributions of the secondary article.</p></li>
-<li><p><strong>Slide 3</strong>: Any criticisms, challenges, or limitations highlighted in the article.</p></li>
-<li><p><strong>Slide 4</strong>: Data, methods, and any unique insights or “curiosities” that stood out to you.</p></li>
+<li><p>Using NCEP/NCAR reanalysis data, reproduce the following figures from Chapter 1:</p>
+<ul>
+<li><p><strong>Figure 1.5</strong>: Global distribution of annual average incoming solar radiation.</p></li>
+<li><p><strong>Figure 1.6</strong>: Global distribution of annual average outgoing longwave radiation.</p></li>
+<li><p><strong>Figure 1.7</strong>: Zonal averages of incoming and outgoing radiation.</p></li>
+<li><p><strong>Figure 1.8</strong>: Annual average surface temperature distribution.</p></li>
+<li><p><strong>Figure 1.9</strong>: Zonal average surface temperature by latitude.</p></li>
 </ul>
-<p>The presentation should be concise and highlight only the most critical points.</p>
+</li>
+</ul>
+<p>These plots can be generated using Python with libraries like <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, and <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. The goal is to practice handling real climate data and gain a deeper understanding of the patterns and concepts introduced in the textbook.</p>
+</li>
+<li><p><strong>Presentation Preparation</strong></p>
+<ul class="simple">
+<li><p>Prepare a 4-slide presentation summarizing your work and analysis:</p>
+<ul>
+<li><p><strong>Slide 1</strong>: Brief summary of Chapter 1 and the importance of the figures you reconstructed.</p></li>
+<li><p><strong>Slide 2</strong>: Reconstructed plot(s) with a description of the data source and methodology used.</p></li>
+<li><p><strong>Slide 3</strong>: Observations and insights from each plot. Discuss any patterns or anomalies you noticed.</p></li>
+<li><p><strong>Slide 4</strong>: Reflection on challenges in the data reconstruction process, such as data resolution limitations or unexpected results.</p></li>
+</ul>
+</li>
+</ul>
+<p>This presentation should be concise and focus on the interpretation of the plots and their relevance to understanding Earth’s energy balance and climate dynamics.</p>
 </li>
 </ol>
 </section>
 <section id="deliverables">
 <h3>Deliverables<a class="headerlink" href="#deliverables" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Submit your 4-slide presentation as a PowerPoint/PDF/Google Sheets link.</p></li>
-<li><p>Be prepared to discuss your findings in class.</p></li>
+<li><p>Submit your 4-slide presentation as a PowerPoint, PDF, or Google Slides link.</p></li>
+<li><p>Be prepared to present your findings and discuss your interpretations of the plots in class.</p></li>
 </ul>
 </section>
-</section>
-<hr class="docutils" />
-<section id="potential-topics-for-assignments">
-<h2>Potential Topics for Assignments<a class="headerlink" href="#potential-topics-for-assignments" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Week 1</strong>: Complete a basic tutorial on Python and Jupyter Notebooks. Identify and summarize key AI/ML applications in atmospheric sciences by analyzing recent case studies.</p></li>
-<li><p><strong>Week 2</strong>: Analyze a simplified Navier-Stokes model to visualize atmospheric flow dynamics, using Python. Review a basic NWP model setup and discuss the role of physical laws and computational limitations.</p></li>
-<li><p><strong>Week 3</strong>: Write a brief report on a key atmospheric science challenge (e.g., extreme weather forecasting or climate downscaling) and propose how AI/ML could help address it. Use Jupyter Notebooks to visualize data from a modern atmospheric dataset (e.g., satellite or reanalysis data) and identify initial patterns relevant to atmospheric behavior.</p></li>
-<li><p><strong>Week 4</strong>: Implement regression and classification tasks using atmospheric data in Python.</p></li>
-<li><p><strong>Week 6</strong>: Build and evaluate a CNN for weather pattern recognition.</p></li>
-<li><p><strong>Week 8</strong>: Develop a model to predict temperature and precipitation using RNN or LSTM.</p></li>
-<li><p><strong>Week 10</strong>: Use a GAN to create synthetic weather scenarios and analyze model uncertainty.</p></li>
-<li><p><strong>Week 12</strong>: Implement a PINN to simulate a basic atmospheric process, like temperature advection.</p></li>
-<li><p><strong>Week 14</strong>: Apply UMAP on climate data for visualization; use SHAP to interpret a predictive model.</p></li>
-<li><p><strong>Final Project (Week 16)</strong>.</p></li>
-</ol>
 </section>
 </section>
 
@@ -482,7 +472,6 @@ Create a 4-slide presentation summarizing your findings. Each slide should addre
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables">Deliverables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-topics-for-assignments">Potential Topics for Assignments</a></li>
 </ul>
   </nav></div>
 

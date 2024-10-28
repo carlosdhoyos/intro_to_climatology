@@ -5,10 +5,6 @@
 
 ## 16-Week Course Outline
 
-# Climatology Course Syllabus
-
-## 16-Week Course Outline
-
 ### Week 1: **Introduction to Climatology and Climate Systems**
    - **Topics:**
      - Overview of climatology.
