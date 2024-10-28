@@ -1,85 +1,176 @@
-# Course Contents
+# Course Syllabus
 
 **Instructor**: Carlos D. Hoyos  
 **Institution**: Universidad Nacional de Colombia, Facultad de Minas, Sede Medellín  
 
-## Course Description
-This graduate-level course explores the intersection of AI, ML, and atmospheric sciences, emphasizing practical skills in data analysis, modeling, and prediction. Topics range from foundational ML principles to specialized applications like extreme weather forecasting and climate modeling.
+## 16-Week Course Outline
 
----
+# Climatology Course Syllabus
 
-## Syllabus
+## 16-Week Course Outline
 
-### **Weeks 1-3: Introduction to AI, ML, and Core Concepts in Atmospheric Sciences**
+### Week 1: **Introduction to Climatology and Climate Systems**
+   - **Topics:**
+     - Overview of climatology.
+     - Earth’s climate system components: atmosphere, oceans, cryosphere, biosphere, and land surface.
+     - Brief history of climate science.
+   - **Readings:**
+     - Hartmann: Chapter 1
+   - **Python Problem:**
+     - Intro to climate data (e.g., `xarray`, `netCDF4` basics), loading and visualizing climate data.
 
-#### **Week 1: Overview of AI/ML in Atmospheric Sciences**
-   - **Topics**: Introduction to AI and ML concepts in the context of atmospheric sciences, history, and evolution of AI applications in this field, from early statistical models to deep learning and neural networks.
-   - **Readings**: Review papers on ML applications in atmospheric sciences, societal and environmental impacts.
+### Week 2: **Energy Balance of the Earth**
+   - **Topics:**
+     - The solar constant and Earth’s energy budget.
+     - Role of greenhouse gases.
+     - Radiative forcing and feedbacks.
+   - **Readings:**
+     - Hartmann: Chapter 2
+   - **Python Problem:**
+     - Load satellite radiation datasets (e.g., CERES) and calculate Earth's energy balance.
 
-#### **Week 2: Fundamental Concepts in Atmospheric Sciences**
-   - **Topics**:
-      - **Forces in the Atmosphere**: Understanding gravitational, Coriolis, and frictional forces, as well as their effects on atmospheric motion.
-      - **Navier-Stokes Equations (NS)**: Introduction to the NS equations as the foundation for describing fluid motion in the atmosphere. Discuss the challenges of solving these equations and approximations used in atmospheric models.
-      - **Basic Atmospheric Thermodynamics**: Key concepts, including temperature, pressure, density, and their relationships, that govern atmospheric behaviors.
-      - **Traditional NWP Models**: Overview of Numerical Weather Prediction (NWP), model grids, parameterizations, and how these models integrate physical laws to simulate the atmosphere.
-   - **Readings**: *Atmospheric Science: An Introductory Survey* by John M. Wallace and Peter V. Hobbs (selected chapters on atmospheric dynamics and thermodynamics).
+### Week 3: **Solar Radiation and Climate**
+   - **Topics:**
+     - Incoming solar radiation and Earth’s orbital dynamics.
+     - Albedo and surface radiation.
+     - Effects of clouds and aerosols on radiation.
+   - **Readings:**
+     - Hartmann: Chapter 3
+   - **Python Problem:**
+     - Analyze surface albedo data and simulate the effect of changes in cloud cover on solar radiation.
 
-#### **Week 3: Atmospheric Modeling, Forecasting, and Modern Challenges**
-   - **Topics**:
-      - **Forecasting Techniques**: Comparison of traditional and modern forecasting approaches, including statistical, dynamical, and AI-based models.
-      - **Challenges in Atmospheric Sciences**: Discuss the limitations in current NWP models, including data sparsity, computational costs, model biases, and the need for downscaling to improve regional forecasts.
-      - **Societal and Environmental Needs**: Explore how improved atmospheric models address societal needs, including disaster preparedness, climate resilience, air quality, and water resource management.
-      - **Current State-of-the-Art**: Introduction to emerging AI/ML applications such as data-driven weather prediction, hybrid physics-AI models, and the role of big data in advancing forecasting skill.
-   - **Readings**: Recent journal articles on state-of-the-art challenges in weather and climate prediction, such as downscaling techniques, data assimilation, and the integration of AI into traditional NWP systems.
+### Week 4: **Atmospheric General Circulation**
+   - **Topics:**
+     - Circulation patterns: Hadley, Ferrel, and Polar cells.
+     - The role of the Coriolis effect.
+     - Large-scale wind patterns and the jet stream.
+   - **Readings:**
+     - Hartmann: Chapter 4
+     - Wallace & Hobbs: Chapter 7
+   - **Python Problem:**
+     - Visualize wind data (ERA5) and analyze zonal winds at different altitudes.
 
-### **Weeks 4-5: Fundamentals of Machine Learning**
-   - **Topics**: Supervised vs. unsupervised learning, key algorithms, model evaluation, and metrics. Introduction to regression and classification techniques applied to atmospheric data.
-   - **Readings**: *Machine Learning: A Probabilistic Perspective* by Kevin Murphy.
+### Week 5: **Ocean Circulation and the Role of the Oceans in Climate**
+   - **Topics:**
+     - Surface and deep ocean circulation (thermohaline circulation).
+     - Ocean heat transport.
+     - Coupling between the atmosphere and the ocean.
+   - **Readings:**
+     - Hartmann: Chapter 5
+     - *Ocean Circulation* by Open University.
+   - **Python Problem:**
+     - Plot ocean surface currents and visualize sea surface temperature (SST) anomalies using reanalysis data.
 
-### **Weeks 6-7: Neural Networks and Deep Learning Foundations**
-   - **Topics**: Basics of neural networks, convolutional neural networks (CNNs), and recurrent neural networks (RNNs). Introduction to applications of CNNs and RNNs in recognizing atmospheric patterns, e.g., cloud formation and precipitation.
-   - **Readings**: NVIDIA research on deep learning for weather prediction.
+### Week 6: **Atmosphere-Ocean Interaction and Teleconnections**
+   - **Topics:**
+     - ENSO, NAO, and PDO.
+     - Atmospheric and oceanic teleconnections.
+   - **Readings:**
+     - Hartmann: Chapter 6
+     - *Teleconnections* by Chunzai Wang (supplemental paper).
+   - **Python Problem:**
+     - Use Python to extract teleconnection indices (e.g., Niño 3.4) and analyze their impact on regional climate variables like precipitation.
 
-### **Weeks 8-9: Advanced Neural Networks for Atmospheric Applications**
-   - **Topics**: Transformers, Long Short-Term Memory (LSTM) networks, and sequence-to-sequence models. Emphasis on ML-based weather prediction research from leading companies like DeepMind, Microsoft, and NVIDIA, exploring their techniques and recent advancements.
-   - **Readings**: DeepMind and Microsoft papers on transformers for temporal forecasting.
+### Week 7: **Moisture, Clouds, and Precipitation**
+   - **Topics:**
+     - Water vapor, condensation, and cloud formation.
+     - Precipitation mechanisms and cloud types.
+     - The global hydrological cycle.
+   - **Readings:**
+     - Hartmann: Chapter 7
+   - **Python Problem:**
+     - Visualize global precipitation data and analyze interannual variability in precipitation using Python (`matplotlib`, `xarray`).
 
-### **Weeks 10-11: Generative Models and Uncertainty Quantification**
-   - **Topics**: Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and methods for quantifying uncertainty in predictions. Applications in synthetic data generation for extreme weather scenarios.
-   - **Readings**: Research by Huawei on generative models for atmospheric applications.
+### Week 8: **Climate Variability and Climate Extremes**
+   - **Topics:**
+     - Internal climate variability.
+     - External forcing factors: solar variability, volcanic eruptions.
+     - Understanding climate extremes (droughts, heatwaves, floods).
+   - **Readings:**
+     - Hartmann: Chapter 8
+     - **Supplementary Reading:**
+       - *The Extremes of the Extremes: Extraordinary Floods* by Werritty et al. (as a paper).
+   - **Python Problem:**
+     - Analyze historical climate extremes using reanalysis data, focusing on frequency and intensity trends.
 
-### **Weeks 12-13: Physics-Informed AI and Hybrid Modeling**
-   - **Topics**: Physics-informed neural networks (PINNs) and hybrid approaches combining ML with numerical weather prediction (NWP). Exploration of how integrating physical constraints into ML models improves prediction accuracy and reliability in atmospheric contexts.
-   - **Readings**: ECMWF MOOC materials and NVIDIA papers on physics-informed models.
+### Week 9: **The Carbon Cycle and Greenhouse Gases**
+   - **Topics:**
+     - Overview of the carbon cycle.
+     - Natural versus anthropogenic carbon sources and sinks.
+     - Role of CO₂ and methane in global warming.
+   - **Readings:**
+     - Hartmann: Chapter 9
+     - Wallace & Hobbs: Chapter 9
+   - **Python Problem:**
+     - Analyze atmospheric CO₂ levels using Mauna Loa data and correlate it with global temperature anomalies.
 
-### **Weeks 14-15: Interpretability and Dimensionality Reduction**
-   - **Topics**: Explainable AI techniques (e.g., SHAP values, LIME) and dimensionality reduction methods (e.g., UMAP, t-SNE) for visualizing high-dimensional climate data. Discussion on the importance of interpretability in ensuring model transparency and understanding in climate and weather forecasting.
-   - **Readings**: Recent research on interpretability in ML for atmospheric sciences.
+### Week 10: **Climate Change: Past, Present, and Future**
+   - **Topics:**
+     - Paleoclimates: ice ages, interglacial periods.
+     - The current warming trend.
+     - Future climate projections based on models (RCPs, SSPs).
+   - **Readings:**
+     - Hartmann: Chapter 10
+     - *The Climate Modelling Primer* by Henderson-Sellers & McGuffie.
+   - **Python Problem:**
+     - Use IPCC model output to visualize and compare climate projections under different scenarios.
 
-### **Weeks 16: Climate Modeling, Downscaling, and Advanced Applications**
-   - **Topics**: High-resolution climate modeling, downscaling techniques, and transfer learning applications in climate science. Focus on leveraging transfer learning to enhance predictive capability across spatial and temporal scales in climate models.
-   - **Readings**: Microsoft and DeepMind research on transfer learning in climate science.
+### Week 11: **Climate Models and Climate Sensitivity**
+   - **Topics:**
+     - Types of climate models (GCMs, RCMs).
+     - Model resolution and parameterization.
+     - Climate sensitivity and feedbacks.
+   - **Readings:**
+     - Hartmann: Chapter 11
+     - *Principles of Planetary Climate* by Pierrehumbert.
+   - **Python Problem:**
+     - Explore a simple energy balance model using Python to demonstrate climate sensitivity.
 
----
+### Week 12: **Climate Forecasting and Uncertainty**
+   - **Topics:**
+     - Short-term versus long-term climate forecasts.
+     - Sources of uncertainty in climate projections.
+     - Ensemble forecasts and probabilistic climate predictions.
+   - **Readings:**
+     - Hartmann: Chapter 12
+   - **Python Problem:**
+     - Run and visualize an ensemble of climate model simulations, and explore the uncertainty ranges for temperature or precipitation.
 
-## Learning Outcomes
-By the end of this course, students will:
-1. Understand fundamental AI and ML techniques and their applications in atmospheric sciences.
-2. Gain hands-on experience with neural networks, and interpretable ML.
-3. Apply physics-informed AI and downscaling techniques to atmospheric datasets.
-4. Develop skills in working with atmospheric data to address challenges in climate resilience, energy forecasting, and environmental management.
+### Week 13: **Impacts of Climate Change on Natural and Human Systems**
+   - **Topics:**
+     - Impact of climate change on ecosystems, biodiversity, and agriculture.
+     - Human health, water resources, and urban infrastructure.
+   - **Readings:**
+     - Hartmann: Chapter 13
+     - *Climate Change and Global Poverty* by David Satterthwaite (paper).
+   - **Python Problem:**
+     - Analyze spatial data on agricultural productivity and model the impact of changing precipitation or temperature patterns.
 
-## Course Resources
-- **Textbooks**: 
-   - *Deep Learning* by Ian Goodfellow.
-   - *Machine Learning: A Probabilistic Perspective* by Kevin Murphy.
-- **Online Materials**: 
-   - ECMWF MOOC, GitHub resources, and recent ML research papers.
-- **Tools**: Jupyter Notebooks, TensorFlow, Keras, PyTorch.
+### Week 14: **Mitigation of Climate Change**
+   - **Topics:**
+     - Renewable energy, carbon sequestration, and geoengineering.
+     - National and international climate policies (e.g., Paris Agreement).
+   - **Readings:**
+     - Hartmann: Chapter 14
+     - *The Climate Fix* by Roger Pielke Jr.
+   - **Python Problem:**
+     - Calculate the potential CO₂ reduction from various mitigation strategies (e.g., renewable energy adoption rates).
 
-## Assessment
-- **Weekly Assignments**: 50% (hands-on coding and problem sets)
-- **Final Project**: 50% (develop an AI/ML model applied to a real-world atmospheric problem)
+### Week 15: **Adaptation to Climate Change**
+   - **Topics:**
+     - Strategies for adapting to sea-level rise, extreme weather, and changing ecosystems.
+     - Climate resilience in urban and rural areas.
+   - **Readings:**
+     - Hartmann: Chapter 15
+     - *The Adaptation Economy* by Marcus Moench (paper).
+   - **Python Problem:**
+     - Use GIS data (e.g., sea-level rise projections) to model impacts on coastal cities and propose adaptation measures.
 
-## Additional Notes
-- **Collaboration**: Students are encouraged to participate in discussions, fostering collaborative learning and continuous improvement.
+### Week 16: **Final Review and Student Presentations**
+   - **Topics:**
+     - Synthesis of course topics.
+     - Student presentations on climate analysis projects.
+   - **Readings:**
+     - Hartmann: Conclusion
+   - **Python Problem:**
+     - Final project: Students create their own climate analysis project using datasets and methods learned during the course.
