@@ -12,11 +12,11 @@ In this assignment, you will delve into foundational concepts in climatology by 
 
 2. **Reconstruct Figures Using NCEP/NCAR Reanalysis Data**
    - Using NCEP/NCAR reanalysis data, reproduce the following figures from Chapter 1:
-     - **Figure 1.5**: Global distribution of annual average incoming solar radiation.
-     - **Figure 1.6**: Global distribution of annual average outgoing longwave radiation.
-     - **Figure 1.7**: Zonal averages of incoming and outgoing radiation.
-     - **Figure 1.8**: Annual average surface temperature distribution.
-     - **Figure 1.9**: Zonal average surface temperature by latitude.
+     - **Figure 1.5**
+     - **Figure 1.6**
+     - **Figure 1.7**
+     - **Figure 1.8**
+     - **Figure 1.9**
 
    These plots can be generated using Python with libraries like `xarray`, `matplotlib`, and `numpy`. The goal is to practice handling real climate data and gain a deeper understanding of the patterns and concepts introduced in the textbook.
 
