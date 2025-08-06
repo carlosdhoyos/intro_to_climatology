@@ -372,74 +372,94 @@ document.write(`
 <h2>Lecture 1: Atmospheric Composition &amp; Vertical Structure<a class="headerlink" href="#lecture-1-atmospheric-composition-vertical-structure" title="Link to this heading">#</a></h2>
 <section id="composition-and-mean-molecular-weight">
 <h3>1.1 Composition and Mean Molecular Weight<a class="headerlink" href="#composition-and-mean-molecular-weight" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Dry air is a mixture, by volume, of<br />
-$<span class="math notranslate nohighlight">\(
-X_{N_2} \approx 0.7808,\quad
-X_{O_2} \approx 0.2095,\quad
-X_{Ar} \approx 0.0093,\quad
-\text{(plus ~0–4% H₂O by volume).}
-\)</span>$</p></li>
-<li><p>Universal gas constant:<br />
-$<span class="math notranslate nohighlight">\(
-R_u = 8.314462618\,\mathrm{J\,mol^{-1}K^{-1}}
-\)</span>$</p></li>
-<li><p>Mean molecular weight of dry air:
-$<span class="math notranslate nohighlight">\(
-M_d = \sum_i X_i\,M_i
-    = 0.7808\,(28.0134) + 0.2095\,(31.9988) + 0.0093\,(39.948)
-    \approx 28.9647\,\mathrm{g/mol}
-\)</span>$</p></li>
-<li><p>Dry-air gas constant:
-$<span class="math notranslate nohighlight">\(
-R_d = \frac{R_u}{M_d/1000}
-    \approx \frac{8.314}{0.0289647}
-    \approx 287.05\,\mathrm{J\,kg^{-1}K^{-1}}
-\)</span>$</p></li>
+<ul>
+<li><p>Dry air is a mixture, by volume, of</p>
+<div class="math notranslate nohighlight">
+\[
+  X_{N_2} \approx 0.7808,\quad
+  X_{O_2} \approx 0.2095,\quad
+  X_{Ar} \approx 0.0093,\quad
+  \text{(plus ~0–4% H₂O by volume).}
+  \]</div>
+</li>
+<li><p>Universal gas constant:</p>
+<div class="math notranslate nohighlight">
+\[
+  R_u = 8.314462618\,\mathrm{J\,mol^{-1}K^{-1}}
+  \]</div>
+</li>
+<li><p>Mean molecular weight of dry air:</p>
+<div class="math notranslate nohighlight">
+\[
+  M_d = \sum_i X_i\,M_i
+      = 0.7808\,(28.0134) + 0.2095\,(31.9988) + 0.0093\,(39.948)
+      \approx 28.9647\,\mathrm{g/mol}
+  \]</div>
+</li>
+<li><p>Dry-air gas constant:</p>
+<div class="math notranslate nohighlight">
+\[
+  R_d = \frac{R_u}{M_d/1000}
+      \approx \frac{8.314}{0.0289647}
+      \approx 287.05\,\mathrm{J\,kg^{-1}K^{-1}}
+  \]</div>
+</li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="hydrostatic-balance">
 <h3>1.2 Hydrostatic Balance<a class="headerlink" href="#hydrostatic-balance" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Vertical force balance in a stationary atmosphere:
-$<span class="math notranslate nohighlight">\(
-dp = -\rho\,g\,dz
-\)</span>$</p></li>
-<li><p>Ideal-gas law for dry air:
-$<span class="math notranslate nohighlight">\(
-p = \rho\,R_d\,T
-\quad \Rightarrow \quad
-\rho = \frac{p}{R_d\,T}
-\)</span>$</p></li>
-<li><p>Substitute into hydrostatic balance:
-$<span class="math notranslate nohighlight">\(
-\frac{dp}{dz} = -\frac{p}{R_d\,T}\,g
-\quad \Rightarrow \quad
-\frac{dp}{p} = -\frac{g}{R_d\,T}\,dz
-\)</span>$</p></li>
-<li><p><strong>Isothermal layer</strong> (<span class="math notranslate nohighlight">\(T = \text{const}\)</span>):
-$<span class="math notranslate nohighlight">\(
-\int_{p_0}^{p(z)} \frac{dp'}{p'} = -\frac{g}{R_d\,T} \int_0^z dz'
-\quad \Rightarrow \quad
-p(z) = p_0\,\exp\left(-\frac{z}{H}\right)
-\)</span>$</p></li>
-<li><p>Scale height:
-$<span class="math notranslate nohighlight">\(
-H = \frac{R_d\,T}{g} \approx \frac{287\,T}{9.81} \ \mathrm{m}
-\)</span>$</p></li>
+<ul>
+<li><p>Vertical force balance in a stationary atmosphere:</p>
+<div class="math notranslate nohighlight">
+\[
+  dp = -\rho\,g\,dz
+  \]</div>
+</li>
+<li><p>Ideal-gas law for dry air:</p>
+<div class="math notranslate nohighlight">
+\[
+  p = \rho\,R_d\,T
+  \quad \Rightarrow \quad
+  \rho = \frac{p}{R_d\,T}
+  \]</div>
+</li>
+<li><p>Substitute into hydrostatic balance:</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{dp}{dz} = -\frac{p}{R_d\,T}\,g
+  \quad \Rightarrow \quad
+  \frac{dp}{p} = -\frac{g}{R_d\,T}\,dz
+  \]</div>
+</li>
+<li><p><strong>Isothermal layer</strong> (<span class="math notranslate nohighlight">\(T = \text{const}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+  \int_{p_0}^{p(z)} \frac{dp'}{p'} = -\frac{g}{R_d\,T} \int_0^z dz'
+  \quad \Rightarrow \quad
+  p(z) = p_0\,\exp\left(-\frac{z}{H}\right)
+  \]</div>
+</li>
+<li><p>Scale height:</p>
+<div class="math notranslate nohighlight">
+\[
+  H = \frac{R_d\,T}{g} \approx \frac{287\,T}{9.81} \ \mathrm{m}
+  \]</div>
+</li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="density-profile">
 <h3>1.3 Density Profile<a class="headerlink" href="#density-profile" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>From ideal gas:
-$<span class="math notranslate nohighlight">\(
-\rho(z) = \frac{p(z)}{R_d\,T} = \rho_0\,e^{-z/H}
-\)</span>$</p></li>
-<li><p><strong>Examples:</strong></p>
 <ul>
+<li><p>From ideal gas:</p>
+<div class="math notranslate nohighlight">
+\[
+  \rho(z) = \frac{p(z)}{R_d\,T} = \rho_0\,e^{-z/H}
+  \]</div>
+</li>
+<li><p><strong>Examples:</strong></p>
+<ul class="simple">
 <li><p>Tropics (<span class="math notranslate nohighlight">\(T \approx 300\)</span> K): <span class="math notranslate nohighlight">\(H \approx 8.78\)</span> km</p></li>
 <li><p>Poles (<span class="math notranslate nohighlight">\(T \approx 250\)</span> K): <span class="math notranslate nohighlight">\(H \approx 7.30\)</span> km</p></li>
 </ul>
@@ -452,38 +472,48 @@ $<span class="math notranslate nohighlight">\(
 <h2>Lecture 2: Thermodynamic Processes &amp; Lapse Rates<a class="headerlink" href="#lecture-2-thermodynamic-processes-lapse-rates" title="Link to this heading">#</a></h2>
 <section id="first-law-of-thermodynamics-for-a-parcel">
 <h3>2.1 First Law of Thermodynamics for a Parcel<a class="headerlink" href="#first-law-of-thermodynamics-for-a-parcel" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>First law per unit mass:
-$<span class="math notranslate nohighlight">\(
-dQ = c_p\,dT - \alpha\,dp,
-\quad \alpha = \frac{1}{\rho}
-\)</span>$</p></li>
-<li><p><strong>Dry adiabatic process</strong> (<span class="math notranslate nohighlight">\(dQ = 0\)</span>):
-$<span class="math notranslate nohighlight">\(
-c_p\,dT = \frac{1}{\rho}\,dp = R_d\,T\,\frac{dp}{p}
-\)</span>$</p></li>
-<li><p>Leading to the dry adiabatic lapse rate:
-$<span class="math notranslate nohighlight">\(
-\frac{dT}{dz} = -\frac{g}{c_p}
-\quad \Rightarrow \quad
-\Gamma_d = -\frac{dT}{dz} = \frac{g}{c_p} \approx \frac{9.81}{1005} \approx 9.8\,\mathrm{K\,km^{-1}}
-\)</span>$</p></li>
+<ul>
+<li><p>First law per unit mass:</p>
+<div class="math notranslate nohighlight">
+\[
+  dQ = c_p\,dT - \alpha\,dp,
+  \quad \alpha = \frac{1}{\rho}
+  \]</div>
+</li>
+<li><p><strong>Dry adiabatic process</strong> (<span class="math notranslate nohighlight">\(dQ = 0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+  c_p\,dT = \frac{1}{\rho}\,dp = R_d\,T\,\frac{dp}{p}
+  \]</div>
+</li>
+<li><p>Leading to the dry adiabatic lapse rate:</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{dT}{dz} = -\frac{g}{c_p}
+  \quad \Rightarrow \quad
+  \Gamma_d = -\frac{dT}{dz} = \frac{g}{c_p} \approx \frac{9.81}{1005} \approx 9.8\,\mathrm{K\,km^{-1}}
+  \]</div>
+</li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="moist-saturated-adiabatic-lapse-rate">
 <h3>2.2 Moist (Saturated) Adiabatic Lapse Rate<a class="headerlink" href="#moist-saturated-adiabatic-lapse-rate" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>In saturated conditions (latent heating):
-$<span class="math notranslate nohighlight">\(
-dQ = L_v\,dq_s = c_p\,dT - \alpha\,dp
-\)</span>$</p></li>
-<li><p>The moist adiabatic lapse rate is:
-$<span class="math notranslate nohighlight">\(
-\Gamma_m = -\frac{dT}{dz}
-         = \frac{g}{c_p}
-           \cdot \frac{1 + \frac{L_v\,q_s}{R_d\,T}}{1 + \frac{L_v^2\,q_s}{c_p\,R_v\,T^2}}
-\)</span>$</p></li>
+<ul>
+<li><p>In saturated conditions (latent heating):</p>
+<div class="math notranslate nohighlight">
+\[
+  dQ = L_v\,dq_s = c_p\,dT - \alpha\,dp
+  \]</div>
+</li>
+<li><p>The moist adiabatic lapse rate is:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Gamma_m = -\frac{dT}{dz}
+           = \frac{g}{c_p}
+             \cdot \frac{1 + \frac{L_v\,q_s}{R_d\,T}}{1 + \frac{L_v^2\,q_s}{c_p\,R_v\,T^2}}
+  \]</div>
+</li>
 <li><p><strong>Typical values in the tropics</strong>:<br />
 <span class="math notranslate nohighlight">\(\Gamma_m \approx 4\)</span>–6 K km⁻¹</p></li>
 </ul>
@@ -491,19 +521,25 @@ $<span class="math notranslate nohighlight">\(
 <hr class="docutils" />
 <section id="virtual-temperature-correction">
 <h3>2.3 Virtual Temperature Correction<a class="headerlink" href="#virtual-temperature-correction" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Virtual temperature:
-$<span class="math notranslate nohighlight">\(
-T_v = T\,(1 + 0.61\,q)
-\)</span>$</p></li>
-<li><p>Modified ideal gas law:
-$<span class="math notranslate nohighlight">\(
-\rho = \frac{p}{R_d\,T_v}
-\)</span>$</p></li>
-<li><p>Buoyancy of a parcel:
-$<span class="math notranslate nohighlight">\(
-b = g\,\frac{T_v' - T_v}{T_v}
-\)</span>$</p></li>
+<ul>
+<li><p>Virtual temperature:</p>
+<div class="math notranslate nohighlight">
+\[
+  T_v = T\,(1 + 0.61\,q)
+  \]</div>
+</li>
+<li><p>Modified ideal gas law:</p>
+<div class="math notranslate nohighlight">
+\[
+  \rho = \frac{p}{R_d\,T_v}
+  \]</div>
+</li>
+<li><p>Buoyancy of a parcel:</p>
+<div class="math notranslate nohighlight">
+\[
+  b = g\,\frac{T_v' - T_v}{T_v}
+  \]</div>
+</li>
 </ul>
 </section>
 </section>
@@ -512,43 +548,51 @@ b = g\,\frac{T_v' - T_v}{T_v}
 <h2>Lecture 3: Potential Temperature, Static Stability &amp; Brunt–Väisälä<a class="headerlink" href="#lecture-3-potential-temperature-static-stability-bruntvaisala" title="Link to this heading">#</a></h2>
 <section id="potential-temperature-theta">
 <h3>3.1 Potential Temperature <span class="math notranslate nohighlight">\(\theta\)</span><a class="headerlink" href="#potential-temperature-theta" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Defined as:
-$<span class="math notranslate nohighlight">\(
-\theta = T\,\left(\frac{p_0}{p}\right)^{R_d/c_p}
-\)</span>$</p></li>
-<li><p>In dry adiabatic motion (<span class="math notranslate nohighlight">\(dQ=0\)</span>), <span class="math notranslate nohighlight">\(\theta\)</span> is conserved:
-$<span class="math notranslate nohighlight">\(
-d\ln \theta = 0
-\)</span>$</p></li>
+<ul>
+<li><p>Defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \theta = T\,\left(\frac{p_0}{p}\right)^{R_d/c_p}
+  \]</div>
+</li>
+<li><p>In dry adiabatic motion (<span class="math notranslate nohighlight">\(dQ=0\)</span>), <span class="math notranslate nohighlight">\(\theta\)</span> is conserved:</p>
+<div class="math notranslate nohighlight">
+\[
+  d\ln \theta = 0
+  \]</div>
+</li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="equivalent-potential-temperature-theta-e">
 <h3>3.2 Equivalent Potential Temperature <span class="math notranslate nohighlight">\(\theta_e\)</span><a class="headerlink" href="#equivalent-potential-temperature-theta-e" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Includes moisture effect:
-$<span class="math notranslate nohighlight">\(
-\theta_e \approx \theta\,\exp\left(\frac{L_v\,r_s}{c_p\,T}\right)
-\)</span>$</p></li>
+<ul>
+<li><p>Includes moisture effect:</p>
+<div class="math notranslate nohighlight">
+\[
+  \theta_e \approx \theta\,\exp\left(\frac{L_v\,r_s}{c_p\,T}\right)
+  \]</div>
+</li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="static-stability-and-bruntvaisala-frequency">
 <h3>3.3 Static Stability and Brunt–Väisälä Frequency<a class="headerlink" href="#static-stability-and-bruntvaisala-frequency" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Defined as:
-$<span class="math notranslate nohighlight">\(
-N^2 = \frac{g}{\theta}\,\frac{d\theta}{dz}
-\)</span>$</p></li>
-<li><p>Interpretation:</p>
 <ul>
+<li><p>Defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  N^2 = \frac{g}{\theta}\,\frac{d\theta}{dz}
+  \]</div>
+</li>
+<li><p>Interpretation:</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N^2 &gt; 0\)</span>: stable (parcel oscillates)</p></li>
 <li><p><span class="math notranslate nohighlight">\(N^2 &lt; 0\)</span>: unstable (parcel rises or sinks)</p></li>
 </ul>
 </li>
 <li><p><strong>Typical values</strong>:</p>
-<ul>
+<ul class="simple">
 <li><p>Tropical troposphere: <span class="math notranslate nohighlight">\(N \sim 0.01\)</span>–0.02 s⁻¹</p></li>
 <li><p>Stratosphere: <span class="math notranslate nohighlight">\(N \sim 0.02\)</span>–0.05 s⁻¹</p></li>
 </ul>

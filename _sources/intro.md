@@ -12,8 +12,7 @@ This course emphasizes the importance of climatology for addressing practical en
 - **Disaster Preparedness:** Understanding climate helps predict extreme weather and develop early warning systems for natural disasters.  
 - **Water Resource Management:** Climatology aids in managing water supplies, especially in areas affected by droughts and seasonal variability.  
 - **Agriculture and Food Security:** Climate information is essential for agriculture, helping farmers plan for planting, irrigation, and pest control.  
-- **Energy Planning:** Renewable energy sources like solar and wind depend on weather patterns, making climate data crucial for sustainable energy planning.  
-- **Local Case Studies:** We’ll apply concepts to Colombian contexts—for example, analyzing ENSO-driven variability of Andean rainfall—to show how regional climate threads into global teleconnections.
+- **Energy Planning:** Renewable energy sources like solar and wind depend on weather patterns, making climate data crucial for sustainable energy planning.
 
 ### 1. **The Climate System**
    - The climate system comprises the atmosphere, hydrosphere, cryosphere, lithosphere, and biosphere, all interacting to regulate Earth's climate. Understanding these components and their interactions is crucial for explaining climate variability and predicting long-term changes.
@@ -40,7 +39,13 @@ The course runs over 16 weeks, divided into **eight 2-week cycles**, each built 
    - Static stability & buoyancy; Brunt–Väisälä frequency  
    - Moist adiabatic lapse rates & convective triggers  
 
-2. **Cycle 2 (Weeks 3–4): Fluid Dynamics, Geostrophic Balance & Atmospheric Circulation**  
+2. **Cycle 2 (Weeks 5–6): Radiative Transfer & Energy Balance**  
+   - Solar (SW) vs. terrestrial (LW) radiation spectra  
+   - Radiative transfer equation & two-stream approximation  
+   - Grey-atmosphere models  
+   - Earth’s top-of-atmosphere budget & OLR diagnostics  
+
+3. **Cycle 3 (Weeks 3–4): Fluid Dynamics, Geostrophic Balance & Atmospheric Circulation**  
    - Forces on air parcels: pressure-gradient & Coriolis  
    - Geostrophic & gradient winds  
    - Horizontal divergence & vertical vorticity  
@@ -48,12 +53,6 @@ The course runs over 16 weeks, divided into **eight 2-week cycles**, each built 
    - **Atmospheric Dynamics & Circulation**  
      - Hadley, Ferrel & Polar cells  
      - Jet streams & monsoon circulations  
-
-3. **Cycle 3 (Weeks 5–6): Radiative Transfer & Energy Balance**  
-   - Solar (SW) vs. terrestrial (LW) radiation spectra  
-   - Radiative transfer equation & two-stream approximation  
-   - Grey-atmosphere models  
-   - Earth’s top-of-atmosphere budget & OLR diagnostics  
 
 4. **Cycle 4 (Weeks 7–8): Moist Processes & Cloud Microphysics**  
    - Moisture variables: specific humidity & saturation  
@@ -98,7 +97,7 @@ The course runs over 16 weeks, divided into **eight 2-week cycles**, each built 
 
 > **Structure per cycle:**  
 > - **Lectures:** 3 sessions covering theory & examples  
-> - **Python Lab:** 1 hands-on exercises
+>     - **Python:** hands-on exercises
 > - **Homework:** State-of-the-art mini-project (choose 1 of 3 topics; work in pairs for the first 4 deliverables)
 
 This eight-cycle framework blends rigorous theory, interactive coding, and real-world case studies to build both conceptual understanding and practical skills in climate science.  
