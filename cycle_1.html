@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'cycle_1';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -181,7 +183,6 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="climate_system_components.html">Components of the Climate System</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tropical Thermodynamics &amp; Static Stability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
@@ -348,8 +349,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-3-potential-temperature-static-stability-bruntvaisala">Lecture 3: Potential Temperature, Static Stability &amp; Brunt–Väisälä</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature-theta">3.1 Potential Temperature (\theta)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-potential-temperature-theta-e">3.2 Equivalent Potential Temperature (\theta_e)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature-theta">3.1 Potential Temperature <span class="math notranslate nohighlight">\(\theta\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-potential-temperature-theta-e">3.2 Equivalent Potential Temperature <span class="math notranslate nohighlight">\(\theta_e\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-stability-and-bruntvaisala-frequency">3.3 Static Stability and Brunt–Väisälä Frequency</a></li>
 </ul>
 </li>
@@ -373,71 +374,74 @@ document.write(`
 <h3>1.1 Composition and Mean Molecular Weight<a class="headerlink" href="#composition-and-mean-molecular-weight" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Dry air is a mixture, by volume, of<br />
-[
-X_{N_2}\approx0.7808,\quad
-X_{O_2}\approx0.2095,\quad
-X_{Ar}\approx0.0093,
-\quad\text{(plus ~0–4% H₂O by volume).}
-]</p></li>
-<li><p>Universal gas constant: (R_u = 8.314462618,\mathrm{J,mol^{-1}K^{-1}}).</p></li>
+$<span class="math notranslate nohighlight">\(
+X_{N_2} \approx 0.7808,\quad
+X_{O_2} \approx 0.2095,\quad
+X_{Ar} \approx 0.0093,\quad
+\text{(plus ~0–4% H₂O by volume).}
+\)</span>$</p></li>
+<li><p>Universal gas constant:<br />
+$<span class="math notranslate nohighlight">\(
+R_u = 8.314462618\,\mathrm{J\,mol^{-1}K^{-1}}
+\)</span>$</p></li>
 <li><p>Mean molecular weight of dry air:
-[
-M_d = \sum_i X_i,M_i
-= 0.7808,(28.0134) + 0.2095,(31.9988)
-+ 0.0093,(39.948) \approx 28.9647\ \mathrm{g/mol}.
-]</p></li>
+$<span class="math notranslate nohighlight">\(
+M_d = \sum_i X_i\,M_i
+    = 0.7808\,(28.0134) + 0.2095\,(31.9988) + 0.0093\,(39.948)
+    \approx 28.9647\,\mathrm{g/mol}
+\)</span>$</p></li>
 <li><p>Dry-air gas constant:
-[
+$<span class="math notranslate nohighlight">\(
 R_d = \frac{R_u}{M_d/1000}
-\approx \frac{8.314}{0.0289647}
-\approx 287.05\ \mathrm{J,kg^{-1}K^{-1}}.
-]</p></li>
+    \approx \frac{8.314}{0.0289647}
+    \approx 287.05\,\mathrm{J\,kg^{-1}K^{-1}}
+\)</span>$</p></li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="hydrostatic-balance">
 <h3>1.2 Hydrostatic Balance<a class="headerlink" href="#hydrostatic-balance" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Vertical force balance in a stationary atmosphere:
-[
-dp = -\rho,g,dz.
-]</p></li>
+$<span class="math notranslate nohighlight">\(
+dp = -\rho\,g\,dz
+\)</span>$</p></li>
 <li><p>Ideal-gas law for dry air:
-[
-p = \rho,R_d,T
-\quad\Longrightarrow\quad
-\rho = \frac{p}{R_d,T}.
-]</p></li>
-<li><p>Substitute into hydrostatic:
-[
-\frac{dp}{dz} = -\frac{p}{R_d,T},g
-\quad\Longrightarrow\quad
-\frac{dp}{p} = -\frac{g}{R_d,T},dz.
-]</p></li>
-<li><p><strong>Isothermal layer</strong> ((T=) constant):
-[
-\int_{p_0}^{p(z)}!\frac{dp’}{p’}
-= -\frac{g}{R_d,T}\int_0^z dz’
-\quad\Longrightarrow\quad
-p(z)=p_0,\exp!\Bigl(-\tfrac{z}{H}\Bigr),
-]
-where the <strong>scale height</strong> is
-[
-H = \frac{R_d,T}{g}
-\approx \frac{287,T}{9.81}\ \mathrm{m}.
-]</p></li>
+$<span class="math notranslate nohighlight">\(
+p = \rho\,R_d\,T
+\quad \Rightarrow \quad
+\rho = \frac{p}{R_d\,T}
+\)</span>$</p></li>
+<li><p>Substitute into hydrostatic balance:
+$<span class="math notranslate nohighlight">\(
+\frac{dp}{dz} = -\frac{p}{R_d\,T}\,g
+\quad \Rightarrow \quad
+\frac{dp}{p} = -\frac{g}{R_d\,T}\,dz
+\)</span>$</p></li>
+<li><p><strong>Isothermal layer</strong> (<span class="math notranslate nohighlight">\(T = \text{const}\)</span>):
+$<span class="math notranslate nohighlight">\(
+\int_{p_0}^{p(z)} \frac{dp'}{p'} = -\frac{g}{R_d\,T} \int_0^z dz'
+\quad \Rightarrow \quad
+p(z) = p_0\,\exp\left(-\frac{z}{H}\right)
+\)</span>$</p></li>
+<li><p>Scale height:
+$<span class="math notranslate nohighlight">\(
+H = \frac{R_d\,T}{g} \approx \frac{287\,T}{9.81} \ \mathrm{m}
+\)</span>$</p></li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="density-profile">
 <h3>1.3 Density Profile<a class="headerlink" href="#density-profile" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Since (\rho=p/(R_dT)), for isothermal:
-[
-\rho(z)=\rho_0,e^{-z/H}.
-]</p></li>
-<li><p><strong>Example:</strong></p>
+<li><p>From ideal gas:
+$<span class="math notranslate nohighlight">\(
+\rho(z) = \frac{p(z)}{R_d\,T} = \rho_0\,e^{-z/H}
+\)</span>$</p></li>
+<li><p><strong>Examples:</strong></p>
 <ul>
-<li><p>Tropics: (T\approx300,\mathrm K) → (H\approx8.78\ \mathrm{km}).</p></li>
-<li><p>Poles: (T\approx250,\mathrm K) → (H\approx7.30\ \mathrm{km}).</p></li>
+<li><p>Tropics (<span class="math notranslate nohighlight">\(T \approx 300\)</span> K): <span class="math notranslate nohighlight">\(H \approx 8.78\)</span> km</p></li>
+<li><p>Poles (<span class="math notranslate nohighlight">\(T \approx 250\)</span> K): <span class="math notranslate nohighlight">\(H \approx 7.30\)</span> km</p></li>
 </ul>
 </li>
 </ul>
@@ -450,62 +454,56 @@ H = \frac{R_d,T}{g}
 <h3>2.1 First Law of Thermodynamics for a Parcel<a class="headerlink" href="#first-law-of-thermodynamics-for-a-parcel" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>First law per unit mass:
-[
-dQ = c_p,dT - \alpha,dp,
-\quad
-\alpha = \frac{1}{\rho}.
-]</p></li>
-<li><p><strong>Dry adiabatic</strong> ((dQ=0)):
-[
-c_p,dT = \alpha,dp
-= \frac{1}{\rho},dp
-= R_d,T;\frac{dp}{p},
-]
-using (dp/p = d\rho/\rho + dT/T).  But directly:
-[
-\frac{dT}{dz}
-= -\frac{g}{c_p}
-\quad\Longrightarrow\quad
-\Gamma_d = -\frac{dT}{dz}
-= \frac{g}{c_p}
-\approx \frac{9.81}{1005}
-\approx 9.8\ \mathrm{K,km^{-1}}.
-]</p></li>
+$<span class="math notranslate nohighlight">\(
+dQ = c_p\,dT - \alpha\,dp,
+\quad \alpha = \frac{1}{\rho}
+\)</span>$</p></li>
+<li><p><strong>Dry adiabatic process</strong> (<span class="math notranslate nohighlight">\(dQ = 0\)</span>):
+$<span class="math notranslate nohighlight">\(
+c_p\,dT = \frac{1}{\rho}\,dp = R_d\,T\,\frac{dp}{p}
+\)</span>$</p></li>
+<li><p>Leading to the dry adiabatic lapse rate:
+$<span class="math notranslate nohighlight">\(
+\frac{dT}{dz} = -\frac{g}{c_p}
+\quad \Rightarrow \quad
+\Gamma_d = -\frac{dT}{dz} = \frac{g}{c_p} \approx \frac{9.81}{1005} \approx 9.8\,\mathrm{K\,km^{-1}}
+\)</span>$</p></li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="moist-saturated-adiabatic-lapse-rate">
 <h3>2.2 Moist (Saturated) Adiabatic Lapse Rate<a class="headerlink" href="#moist-saturated-adiabatic-lapse-rate" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>When saturated, latent heating enters:
-[
-dQ = L_v,dq_s
-= c_p,dT - \alpha,dp.
-]</p></li>
-<li><p>Using Clapeyron relation for saturation mixing ratio (q_s) and rearranging (see e.g. Emanuel 1994):
-[
-\Gamma_m
-= -\frac{dT}{dz}
-= \frac{g}{c_p}
-\frac{1 + \dfrac{L_v,q_s}{R_d,T}}
-{1 + \dfrac{L_v^2,q_s}{c_p,R_v,T^2}}.
-]</p></li>
-<li><p>Typical values in tropics:<br />
-(\Gamma_m\approx4)–6 K km⁻¹ (vs. dry 9.8 K km⁻¹).</p></li>
+<li><p>In saturated conditions (latent heating):
+$<span class="math notranslate nohighlight">\(
+dQ = L_v\,dq_s = c_p\,dT - \alpha\,dp
+\)</span>$</p></li>
+<li><p>The moist adiabatic lapse rate is:
+$<span class="math notranslate nohighlight">\(
+\Gamma_m = -\frac{dT}{dz}
+         = \frac{g}{c_p}
+           \cdot \frac{1 + \frac{L_v\,q_s}{R_d\,T}}{1 + \frac{L_v^2\,q_s}{c_p\,R_v\,T^2}}
+\)</span>$</p></li>
+<li><p><strong>Typical values in the tropics</strong>:<br />
+<span class="math notranslate nohighlight">\(\Gamma_m \approx 4\)</span>–6 K km⁻¹</p></li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="virtual-temperature-correction">
 <h3>2.3 Virtual Temperature Correction<a class="headerlink" href="#virtual-temperature-correction" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Virtual temperature (T_v) accounts for moisture:
-[
-T_v = T,(1 + 0.61,q),
-\quad
-\rho = \frac{p}{R_d,T_v}.
-]</p></li>
+<li><p>Virtual temperature:
+$<span class="math notranslate nohighlight">\(
+T_v = T\,(1 + 0.61\,q)
+\)</span>$</p></li>
+<li><p>Modified ideal gas law:
+$<span class="math notranslate nohighlight">\(
+\rho = \frac{p}{R_d\,T_v}
+\)</span>$</p></li>
 <li><p>Buoyancy of a parcel:
-[
-b = g,\frac{T_v’ - T_v}{T_v}.
-]</p></li>
+$<span class="math notranslate nohighlight">\(
+b = g\,\frac{T_v' - T_v}{T_v}
+\)</span>$</p></li>
 </ul>
 </section>
 </section>
@@ -513,45 +511,46 @@ b = g,\frac{T_v’ - T_v}{T_v}.
 <section id="lecture-3-potential-temperature-static-stability-bruntvaisala">
 <h2>Lecture 3: Potential Temperature, Static Stability &amp; Brunt–Väisälä<a class="headerlink" href="#lecture-3-potential-temperature-static-stability-bruntvaisala" title="Link to this heading">#</a></h2>
 <section id="potential-temperature-theta">
-<h3>3.1 Potential Temperature (\theta)<a class="headerlink" href="#potential-temperature-theta" title="Link to this heading">#</a></h3>
+<h3>3.1 Potential Temperature <span class="math notranslate nohighlight">\(\theta\)</span><a class="headerlink" href="#potential-temperature-theta" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Defined as temperature a parcel would have if brought adiabatically to reference pressure (p_0) (usually 1000 hPa):
-[
-\theta = T
-\Bigl(\frac{p_0}{p}\Bigr)^{R_d/c_p}.
-]</p></li>
-<li><p>From dry adiabat (dQ=0), one shows (d\ln\theta=0).</p></li>
+<li><p>Defined as:
+$<span class="math notranslate nohighlight">\(
+\theta = T\,\left(\frac{p_0}{p}\right)^{R_d/c_p}
+\)</span>$</p></li>
+<li><p>In dry adiabatic motion (<span class="math notranslate nohighlight">\(dQ=0\)</span>), <span class="math notranslate nohighlight">\(\theta\)</span> is conserved:
+$<span class="math notranslate nohighlight">\(
+d\ln \theta = 0
+\)</span>$</p></li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="equivalent-potential-temperature-theta-e">
-<h3>3.2 Equivalent Potential Temperature (\theta_e)<a class="headerlink" href="#equivalent-potential-temperature-theta-e" title="Link to this heading">#</a></h3>
+<h3>3.2 Equivalent Potential Temperature <span class="math notranslate nohighlight">\(\theta_e\)</span><a class="headerlink" href="#equivalent-potential-temperature-theta-e" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Adds latent heat of moisture:
-[
-\theta_e \approx \theta
-\exp!\Bigl(\frac{L_v,r_s}{c_p,T}\Bigr),
-]
-where (r_s) is saturation mixing ratio at ((p,T)).</p></li>
+<li><p>Includes moisture effect:
+$<span class="math notranslate nohighlight">\(
+\theta_e \approx \theta\,\exp\left(\frac{L_v\,r_s}{c_p\,T}\right)
+\)</span>$</p></li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="static-stability-and-bruntvaisala-frequency">
 <h3>3.3 Static Stability and Brunt–Väisälä Frequency<a class="headerlink" href="#static-stability-and-bruntvaisala-frequency" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Define stability via vertical gradient of (\theta):
-[
-N^2
-= \frac{g}{\theta}\frac{d\theta}{dz}.
-]</p></li>
+<li><p>Defined as:
+$<span class="math notranslate nohighlight">\(
+N^2 = \frac{g}{\theta}\,\frac{d\theta}{dz}
+\)</span>$</p></li>
 <li><p>Interpretation:</p>
 <ul>
-<li><p>(N^2&gt;0): stable (parcel displaced returns).</p></li>
-<li><p>(N^2&lt;0): unstable (convective overturning).</p></li>
+<li><p><span class="math notranslate nohighlight">\(N^2 &gt; 0\)</span>: stable (parcel oscillates)</p></li>
+<li><p><span class="math notranslate nohighlight">\(N^2 &lt; 0\)</span>: unstable (parcel rises or sinks)</p></li>
 </ul>
 </li>
-<li><p>Typical values:</p>
+<li><p><strong>Typical values</strong>:</p>
 <ul>
-<li><p>Tropical troposphere: (N\sim0.01)–0.02 s⁻¹.</p></li>
-<li><p>Stratosphere: (N\sim0.02)–0.05 s⁻¹.</p></li>
+<li><p>Tropical troposphere: <span class="math notranslate nohighlight">\(N \sim 0.01\)</span>–0.02 s⁻¹</p></li>
+<li><p>Stratosphere: <span class="math notranslate nohighlight">\(N \sim 0.02\)</span>–0.05 s⁻¹</p></li>
 </ul>
 </li>
 </ul>
@@ -637,8 +636,8 @@ N^2
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-3-potential-temperature-static-stability-bruntvaisala">Lecture 3: Potential Temperature, Static Stability &amp; Brunt–Väisälä</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature-theta">3.1 Potential Temperature (\theta)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-potential-temperature-theta-e">3.2 Equivalent Potential Temperature (\theta_e)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature-theta">3.1 Potential Temperature <span class="math notranslate nohighlight">\(\theta\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-potential-temperature-theta-e">3.2 Equivalent Potential Temperature <span class="math notranslate nohighlight">\(\theta_e\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-stability-and-bruntvaisala-frequency">3.3 Static Stability and Brunt–Väisälä Frequency</a></li>
 </ul>
 </li>
