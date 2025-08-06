@@ -44,9 +44,7 @@ Understanding and tracking these components together is crucial for accurate cli
 
 One could use Python in various ways to explore and analyze the concepts in this chapter on climate system components. Using Python to interact with real-world datasets lets you explore each climate system component in depth. Libraries like `xarray`, `matplotlib`, and `numpy` are powerful tools to analyze, visualize, and better understand climate data, bridging the theoretical concepts in the textbook with actual data and observable trends.
 
-
 Here are some potential examples that tie into each component of the climate system:
-
 
 ### 1. **Atmosphere: Visualizing and Analyzing Atmospheric Data**
    - **Example 1**: Load and plot **global temperature and pressure data** from reanalysis datasets like NCEP/NCAR or ERA5 using `xarray` and `matplotlib`. You could plot temperature profiles by latitude or create a time series of atmospheric CO₂ concentrations to see seasonal trends.
