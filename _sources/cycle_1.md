@@ -4,7 +4,54 @@
 
 ## Lecture 1: Atmospheric Composition & Vertical Structure
 
+### 1.0 Introduction
+
+> - At its core, climate emerges from the interplay between **water** in all its phases and **external energy** supplied primarily by the Sun.
+> - Our goal is to study the behaviour of the Earth’s climate system on timescales longer than individual weather events.  
+> - A fundamental question is: **what do we call “climate” and what questions are we trying to answer?**  Unlike weather, which fluctuates over hours or days, climate refers to long‑term statistics (means, extremes and patterns) of the atmosphere–ocean system. 
+
+Water in the atmosphere can exist as gas, liquid or ice, and transitions between these phases are governed by the *triple point* conditions of temperature and pressure.  
+
+Climatology is inherently **multidisciplinary**.  It draws on **thermodynamics** and **fluid dynamics** to describe the atmosphere and ocean, **energy‑balance** principles to track radiation and heat, **microphysics** of clouds and aerosols, and **turbulence and chaos theory** to understand variability and predictability.  Because the climate system comprises interacting subsystems — the **continents**, **oceans**, **atmosphere**, **cryosphere**, **biosphere**, **lithosphere**, and increasingly, **human activities** — it behaves as a complex set of fluids subject to both **oscillations** (internal variability) and **forcings** (natural and anthropogenic).  As examples, climate depends on:
+
+-  **Astronomical processes:** Earth’s **rotation** and **orbital translation** around the Sun set diurnal and seasonal cycles, modulating the receipt of solar energy.
+- **Atmospheric composition:** the proportion of gases such as nitrogen, oxygen, carbon dioxide and water vapour varies in space and time, altering radiative balance and chemical reactions.
+- **Existing temperature and salinity gradients:** vertical and horizontal differences in temperature and salinity drive circulation in the oceans and atmosphere.
+
+Processes range from small‑scale turbulence to large‑scale modes of variability such as El Niño–Southern Oscillation, and from slow geological changes to rapid human‑induced alterations.
+
+Climate science therefore tackles questions about **natural variability** and **forced changes**, exploring how physical processes and feedbacks give rise to the patterns we observe and how these patterns might evolve.  It seeks not only to describe the current climate but also to understand its sensitivity to various drivers, its predictability on different timescales, and its impacts on ecosystems and societies.
+
+
+
+Because the phase diagram of water is tightly constrained by the ambient environment, small changes in energy can shift the balance between vapour, liquid and ice, profoundly affecting clouds and precipitation.  Understanding how water absorbs, releases and transports energy is therefore central to climatology.
+
+
+
+| **Concept**                       | **Key Points**                                                                                                                             |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| **Water & Triple Point**          | • Phases: vapour, liquid, ice  
+• Transitions governed by ambient temperature & pressure  
+• Triple‐point conditions set phase‐change thresholds                              |
+| **Climate Definition**            | • Long-term statistics of weather (means, extremes, patterns)  
+• Distinguished from weather by timescale (months–centuries vs. days)              |
+| **Fundamental Variables**         | • Atmospheric composition (N₂, O₂, CO₂, H₂O, O₃…)  
+• Temperature/salinity gradients (drive circulation)  
+• Astronomical cycles (rotation, orbit)                                           |
+| **Multidisciplinary Foundations** | • Thermodynamics & energy balance  
+• Fluid dynamics (turbulence, chaos)  
+• Cloud microphysics & radiative transfer  
+• Atmospheric chemistry & aerosols                                           |
+| **Climate System Components**     | • Continents, oceans, atmosphere, cryosphere, biosphere, human activities  
+• All interact as coupled “fluids”                                            |
+| **Variability & Forcings**        | • Internal oscillations (e.g. ENSO)  
+• External forcings (solar, volcanic, anthropogenic)                            |
+| **Research Questions**            | • How do feedbacks (cloud, ice‐albedo, water‐vapour) modulate response?  
+• What is the climate’s sensitivity & predictability on different timescales?     |
+
+
 ### 1.1 Composition and Mean Molecular Weight
+
 
 - Dry air is a mixture, by volume, of  
 
