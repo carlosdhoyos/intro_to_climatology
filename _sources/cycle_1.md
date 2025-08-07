@@ -50,7 +50,57 @@ Because the phase diagram of water is tightly constrained by the ambient environ
 • What is the climate’s sensitivity & predictability on different timescales?     |
 
 
-### 1.1 Composition and Mean Molecular Weight
+┌──────────────────────────────────────────────────┐
+│            Outputs & Variability                │
+│ • Weather vs. climate statistics                │
+│ • Oscillations (ENSO, MJO, etc.)                │
+│ • Long‐term trends (warming, shifts in patterns)│
+└──────────────────────────────────────────────────┘
+            ▲
+            │
+┌──────────────────────────────────────────────────┐
+│               Climate System                    │
+│ • Atmosphere ↔ Oceans ↔ Land                     │
+│ • ↕ Cryosphere (ice, snow)                       │
+│ • ↕ Biosphere (vegetation, carbon cycle)         │
+│ • ↕ Human activities (emissions, land‐use)       │
+└──────────────────────────────────────────────────┘
+            ▲
+            │
+┌──────────────────────────────────────────────────┐
+│               Core Processes                    │
+│ • Thermodynamics (adiabatic, phase changes)     │
+│ • Fluid Dynamics (circulation, turbulence)      │
+│ • Radiation (absorption, emission, transfer)    │
+│ • Chemistry (ozone, aerosols, greenhouse gases) │
+└──────────────────────────────────────────────────┘
+            ▲
+            │
+┌──────────────────────────────────────────────────┐
+│              Forcing & Inputs                   │
+│ • Solar radiation spectrum                      │
+│ • Phase‐change energy of H₂O (latent heat)      │
+│ • Volcanic aerosols, greenhouse gas forcing     │
+└──────────────────────────────────────────────────┘
+
+
+
+### 1.1 Atmospheric Composition and Mean Molecular Weight
+
+The atmosphere is a **mixture of gases** with the following approximate bulk composition by volume:  
+- **Nitrogen (N₂):** 78%  
+- **Oxygen (O₂):** 21%  
+- **Trace gases:** water vapor (H₂O), carbon dioxide (CO₂), ozone (O₃), etc.  
+> Although present in small quantities, these trace constituents (especially H₂O, CO₂ and O₃) play an outsized role in radiative and chemical processes.
+
+
+- **Vertical distribution:** pressure, temperature and humidity all vary with altitude, defining layers such as the troposphere, stratosphere, mesosphere, etc.  
+- **Horizontal distribution:** composition and temperature also vary across latitudes, land vs. ocean, and between hemispheres.  
+
+> Radiative Processes & Energy Balance  
+> - **Influence on radiative fluxes:** gas absorption and emission bands (e.g., H₂O in the infrared, O₃ in the UV) determine how solar and terrestrial radiation is processed.  
+> - **Energy balance:** understanding how incoming solar energy is absorbed, scattered or transmitted, and how outgoing longwave radiation depends on greenhouse gases, is central to climate theory.
+
 
 
 - Dry air is a mixture, by volume, of  
@@ -61,6 +111,7 @@ Because the phase diagram of water is tightly constrained by the ambient environ
   X_{Ar} \approx 0.0093,\quad
   \text{(plus ~0–4% H₂O by volume).}
   $$
+
 
 - Universal gas constant:  
 
