@@ -1,8 +1,21 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+
 # Tropical Thermodynamics & Static Stability
 
-
 ## Lecture 0: Introduction
-
 
 
 > - At its core, climate emerges from the interplay between **water** in all its phases and **external energy** supplied primarily by the Sun.
