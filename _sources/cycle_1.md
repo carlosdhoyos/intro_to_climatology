@@ -102,7 +102,6 @@ The atmosphere is a **mixture of gases** with the following approximate bulk com
 > - **Energy balance:** understanding how incoming solar energy is absorbed, scattered or transmitted, and how outgoing longwave radiation depends on greenhouse gases, is central to climate theory.
 
 
-
 - Dry air is a mixture, by volume, of  
 
   $$
@@ -118,6 +117,7 @@ The atmosphere is a **mixture of gases** with the following approximate bulk com
   $$
   R_u = 8.314462618\,\mathrm{J\,mol^{-1}K^{-1}}
   $$
+
 
 - Mean molecular weight of dry air:
 
@@ -136,6 +136,64 @@ The atmosphere is a **mixture of gases** with the following approximate bulk com
   $$
 
 ---
+
+### 1.2. Ideal‐Gas Law for a Mixture
+
+For a mixture of $n$ moles of ideal gas at pressure $p$, volume $V$ and temperature $T$:
+
+$$
+p\,V = n\,R_u\,T
+$$
+
+where $R_u$ is the universal gas constant.
+
+If the total mass of gas is $m$ and the mean molar mass is $M$, then $n = m/M$, so:
+
+$$
+p\,V = \frac{m}{M}\,R_u\,T \;\equiv\; m\,R\,T,
+$$
+
+where  
+- $R = R_u/M$ is the gas constant for the mixture  
+  (e.g.\ $R_d \approx 287\ \mathrm{J\,kg^{-1}K^{-1}}$ for dry air).  
+
+Therefore, in mass form:
+
+$$
+p = \rho\,R\,T,
+\quad
+\rho = \frac{m}{V}.
+$$
+
+---
+
+## 4. Dalton’s Law of Partial Pressures
+
+In a mixture of ideal gases, the **total pressure** equals the sum of each gas’s partial pressure:
+
+$$
+p = \sum_i p_i.
+$$
+
+Each component obeys its own ideal‐gas relation:
+
+$$
+p_i\,V = m_i\,R_i\,T
+\quad\Longrightarrow\quad
+p_i = \rho_i\,R_i\,T,
+$$
+
+where  
+- $m_i$ is the mass of species $i$,  
+- $R_i = R_u/M_i$ is its specific gas constant, and  
+- $\rho_i = m_i/V$ is its partial density.  
+
+Because $V = \sum_i V_i$, one can also define **partial volume** $V_i$ by:
+
+$$
+p\,V_i = m_i\,R_i\,T.
+$$
+
 
 ### 1.2 Hydrostatic Balance
 
