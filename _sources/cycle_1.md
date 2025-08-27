@@ -25,6 +25,13 @@ kernelspec:
 Climatology is inherently **multidisciplinary**.  It draws on **thermodynamics** and **fluid dynamics** to describe the atmosphere and ocean, **energy‑balance** principles to track radiation and heat, **microphysics** of clouds and aerosols, and **turbulence and chaos theory** to understand variability and predictability.  Because the climate system comprises interacting subsystems — the **continents**, **oceans**, **atmosphere**, **cryosphere**, **biosphere**, **lithosphere**, and increasingly, **human activities** — it behaves as a complex set of fluids subject to both **oscillations** (internal variability) and **forcings** (natural and anthropogenic).  As examples, climate depends on:
 
 -  **Astronomical processes:** Earth’s **rotation** and **orbital translation** around the Sun set diurnal and seasonal cycles, modulating the receipt of solar energy.
+
+![Solar System](figures/solarsystem.png)
+
+![Astronomic Seasons](figures/annual_cycle.png)
+
+![Milankovitch](figures/milankovitch.png)
+
 - **Atmospheric composition:** the proportion of gases such as nitrogen, oxygen, carbon dioxide and water vapour varies in space and time, altering radiative balance and chemical reactions.
 - **Existing temperature and salinity gradients:** vertical and horizontal differences in temperature and salinity drive circulation in the oceans and atmosphere.
 
@@ -37,12 +44,13 @@ Water in the atmosphere can exist as gas, liquid or ice, and transitions between
 Because the phase diagram of water is tightly constrained by the ambient environment, small changes in energy can shift the balance between vapour, liquid and ice, profoundly affecting clouds and precipitation.  Understanding how water absorbs, releases and transports energy is therefore central to climatology.
 
 ```{code-cell} ipython3
-:name: water-phase-diagram
 :tags: [plotly]
+
 import numpy as np
 import plotly.graph_objects as go
 
-# — Updated Constants for Accuracy
+
+# — Constants
 R_u    = 8.314462618    # J/(mol·K), universal gas constant
 T_trip = 273.16         # K, triple-point temperature
 P_trip = 611.657        # Pa, triple-point pressure
@@ -82,21 +90,21 @@ P_sub_arr  = P_trip * np.exp((H_sub / R_u) * (1/T_trip - 1/T_sub_arr))
 # — Build figure
 fig = go.Figure([
     go.Scatter(x=T_sub_arr, y=P_sub_arr, mode='lines',
-               name='Sublimation', line=dict(color='green', width=4)),
+            name='Sublimation', line=dict(color='green', width=4)),
     go.Scatter(x=T_melt_arr, y=P_melt_arr, mode='lines',
-               name='Fusion', line=dict(color='black', width=4)),
+            name='Fusion', line=dict(color='black', width=4)),
     go.Scatter(x=T_vap1_arr, y=P_vap1_arr, mode='lines',
-               name='Vapour (0–1 atm)',
-               line=dict(color='blue', width=4, dash='dash')),
+            name='Vapour (0–1 atm)',
+            line=dict(color='blue', width=4, dash='dash')),
     go.Scatter(x=T_vap2_arr, y=P_vap2_arr, mode='lines',
-               name='Vapour (1 atm–crit)',
-               line=dict(color='blue', width=4)),
+            name='Vapour (1 atm–crit)',
+            line=dict(color='blue', width=4)),
     go.Scatter(x=[T_trip], y=[P_trip], mode='markers+text', name='Triple Point',
-               marker=dict(size=12, color='black'),
-               text=['Triple Point'], textposition='bottom right'),
+            marker=dict(size=12, color='black'),
+            text=['Triple Point'], textposition='bottom right'),
     go.Scatter(x=[T_crit], y=[P_crit], mode='markers+text', name='Critical Point',
-               marker=dict(size=12, symbol='diamond', color='black'),
-               text=['Critical Point'], textposition='top left'),
+            marker=dict(size=12, symbol='diamond', color='black'),
+            text=['Critical Point'], textposition='top left'),
 ])
 
 fig.update_layout(
@@ -110,8 +118,7 @@ fig.update_layout(
 )
 
 fig.show()
-
-```  
+```
 
 ---
 
@@ -119,22 +126,28 @@ fig.show()
 
 ### 1.1 Atmospheric Composition and Mean Molecular Weight
 
-The atmosphere is a **mixture of gases** with the following approximate bulk composition by volume:  
-- **Nitrogen (N₂):** 78%  
-- **Oxygen (O₂):** 21%  
-- **Trace gases:** water vapor (H₂O), carbon dioxide (CO₂), ozone (O₃), etc.  
+While people had early ideas about the nature of air, it wasn’t until the late 18th century that scientists began systematically identifying its main components.
+
+- **Nitrogen (1770s):** Daniel Rutherford is credited with the discovery of nitrogen, marking one of the first major steps in understanding air's composition.
+- **Oxygen (~1770s):** Around the same time, Joseph Priestley and Carl Wilhelm Scheele independently discovered oxygen. They originally referred to it as "dephlogisticated air"—a name based on the then-popular (but now obsolete) phlogiston theory.
+
+
+Once nitrogen and oxygen were recognized as the dominant constituents of the atmosphere, scientists realized that air is composed of roughly:
+
+- **78% Nitrogen**
+- **21% Oxygen**
+
+Throughout the late 1700s and early 1800s, this understanding became more refined. Scientists like **John Dalton** contributed further by identifying and quantifying **trace gases** such as:
+
+- **Argon**
+- **Carbon dioxide (CO₂)**
+- **Ozone (O₃)**
+- **Water vapor (H₂O)**
+
 > Although present in small quantities, these trace constituents (especially H₂O, CO₂ and O₃) play an outsized role in radiative and chemical processes.
 
 
-- **Vertical distribution:** pressure, temperature and humidity all vary with altitude, defining layers such as the troposphere, stratosphere, mesosphere, etc.  
-- **Horizontal distribution:** composition and temperature also vary across latitudes, land vs. ocean, and between hemispheres.  
-
-> Radiative Processes & Energy Balance  
-> - **Influence on radiative fluxes:** gas absorption and emission bands (e.g., H₂O in the infrared, O₃ in the UV) determine how solar and terrestrial radiation is processed.  
-> - **Energy balance:** understanding how incoming solar energy is absorbed, scattered or transmitted, and how outgoing longwave radiation depends on greenhouse gases, is central to climate theory.
-
-
-- Dry air is a mixture, by volume, of  
+- In summary, dry air is a mixture, by volume, of  
 
   $$
   X_{N_2} \approx 0.7808,\quad
@@ -142,6 +155,11 @@ The atmosphere is a **mixture of gases** with the following approximate bulk com
   X_{Ar} \approx 0.0093,\quad
   \text{(plus ~0–4% H₂O by volume).}
   $$
+
+
+
+- **Vertical distribution:** pressure, temperature and humidity all vary with altitude, defining layers such as the troposphere, stratosphere, mesosphere, etc.  
+- **Horizontal distribution:** composition and temperature also vary across latitudes, land vs. ocean, and between hemispheres.  
 
 
 - Universal gas constant:  
@@ -167,17 +185,38 @@ The atmosphere is a **mixture of gases** with the following approximate bulk com
       \approx 287.05\,\mathrm{J\,kg^{-1}K^{-1}}
   $$
 
----
 
 ### 1.2. Ideal‐Gas Law for a Mixture
 
-For a mixture of $n$ moles of ideal gas at pressure $p$, volume $V$ and temperature $T$:
+
+A gas is considered **ideal** when it behaves according to the **ideal gas law**.  For a mixture of $n$ moles of ideal gas at pressure $p$, volume $V$ and temperature $T$:
 
 $$
 p\,V = n\,R_u\,T
 $$
 
-where $R_u$ is the universal gas constant.
+where $R_u$ is the universal gas constant. This law assumes that:
+
+- Gas molecules occupy no volume.
+- There are no intermolecular forces between the molecules.
+
+A gas behaves ideally under the following conditions:
+
+- **Relatively low pressure**: Molecules are far apart and do not interact significantly.
+- **Relatively high temperature**: Molecules have enough kinetic energy to overcome attractive forces.
+
+Under these circumstances, the assumptions of the ideal gas law are reasonably valid. The gas particles are essentially free to move independently, making the law a good approximation.
+
+
+At **standard temperature and pressure (STP)**, **air** behaves very much like an ideal gas. That makes the ideal gas law useful for many practical atmospheric and thermodynamic calculations.
+
+#### Deviations from Ideal Behavior
+
+- **Pressure increases** significantly, or
+- **Temperature decreases** greatly,
+
+In those cases the molecules are forced closer together, and **intermolecular forces** and **molecular volume** can no longer be neglected. In those cases, it is required to account for **real gas effects** using more advanced models like the **van der Waals equation**.
+
 
 If the total mass of gas is $m$ and the mean molar mass is $M$, then $n = m/M$, so:
 
@@ -186,8 +225,11 @@ p\,V = \frac{m}{M}\,R_u\,T \;\equiv\; m\,R\,T,
 $$
 
 where  
+- $R_u = 8.314 \, \text{J/mol·K}$ is the **universal gas constant**,
 - $R = R_u/M$ is the gas constant for the mixture  
   (e.g.\ $R_d \approx 287\ \mathrm{J\,kg^{-1}K^{-1}}$ for dry air).  
+- $M$ is the **molar mass** of the gas (in kg/mol).
+
 
 Therefore, in mass form:
 
@@ -197,9 +239,103 @@ p = \rho\,R\,T,
 \rho = \frac{m}{V}.
 $$
 
----
+where:
+- $P$ is the **pressure** of the gas (in Pascals, Pa),
+- $\rho$ is the **density** of the gas (in $\text{kg/m}^3$),
+- $R$ is the **specific gas constant** (in J/kg·K),
+- $T$ is the **absolute temperature** of the gas (in Kelvin, K).
 
-## 4. Dalton’s Law of Partial Pressures
+
+This form of the Ideal Gas Law relates the **pressure** of a gas to its **density** rather than the amount of gas in moles ($n$). 
+
+```{code-cell} python
+import numpy as np
+import plotly.graph_objects as go
+from plotly.offline import init_notebook_mode
+
+# Initialize Plotly for Jupyter
+init_notebook_mode(connected=True)
+
+# Define ranges for density (ρ) in kg/m³ and temperature (T) in K
+rho = np.linspace(0.1, 10, 50)      # air density from 0.1 to 10 kg/m³
+T = np.linspace(200, 350, 50)       # temperature from 200K to 350K
+rho, T = np.meshgrid(rho, T)
+
+# Specific gas constant for dry air [J/(kg·K)]
+R_specific = 287.05
+
+# Ideal gas law: P = ρ R T
+P = rho * R_specific * T  # [Pa]
+
+# Plot: Pressure as a function of density and temperature
+fig = go.Figure(data=[go.Surface(z=P, x=rho, y=T, colorscale="Viridis")])
+
+# Update layout with correct labels and units
+fig.update_layout(
+    title="Ideal Gas Law (Air): Pressure as a Function of Density and Temperature",
+    scene=dict(
+        xaxis_title="Density (ρ) [kg/m³]",
+        yaxis_title="Temperature (T) [K]",
+        zaxis_title="Pressure (P) [Pa]",
+        camera=dict(eye=dict(x=1.2, y=1.2, z=0.8))
+    ),
+    coloraxis_colorbar=dict(
+        title="Pressure [Pa]",
+        titleside="right"
+    )
+)
+
+fig.show()
+
+
+```
+
+```{code-cell} python
+import numpy as np
+import plotly.graph_objects as go
+from plotly.offline import init_notebook_mode
+
+# Initialize Plotly for Jupyter
+init_notebook_mode(connected=True)
+
+# Define ranges for volume (V) in m³ and temperature (T) in K
+V = np.linspace(0.01, 0.2, 50)     # volume from 0.001 to 0.1 m³
+T = np.linspace(200, 700, 50)       # temperature from 200K to 700K
+V, T = np.meshgrid(V, T)
+
+# Universal gas constant [J/(mol·K)]
+R = 8.314  
+
+# Number of moles
+n = 1  
+
+# Ideal gas law: P = nRT / V
+P = (n * R * T) / V  # [Pa]
+
+# Plot: Pressure as a function of volume and temperature
+fig = go.Figure(data=[go.Surface(z=P, x=V, y=T, colorscale="Cividis")])
+
+# Update layout with correct labels and units
+fig.update_layout(
+    title="Ideal Gas Law: Pressure as a Function of Volume and Temperature",
+    scene=dict(
+        xaxis_title="Volume (V) [m³]",
+        yaxis_title="Temperature (T) [K]",
+        zaxis_title="Pressure (P) [Pa]",
+        camera=dict(eye=dict(x=1.4, y=1.2, z=0.9))
+    ),
+    coloraxis_colorbar=dict(
+        title="Pressure [Pa]",
+        titleside="right"
+    )
+)
+
+fig.show()
+
+```
+
+
+#### Dalton’s Law of Partial Pressures
 
 In a mixture of ideal gases, the **total pressure** equals the sum of each gas’s partial pressure:
 
@@ -227,7 +363,43 @@ p\,V_i = m_i\,R_i\,T.
 $$
 
 
-### 1.2 Hydrostatic Balance
+```{note}
+## The Historical Development of the Ideal Gas Law
+
+The ideal gas law wasn't discovered all at once—it **evolved gradually** through the work of several pioneering scientists who uncovered individual relationships between pressure, volume, and temperature.
+
+### Key Contributions
+
+- **Boyle’s Law (1662)**  
+  Robert Boyle discovered that the **pressure** of a gas is **inversely proportional** to its **volume** when the **temperature is held constant**:  
+
+  $$ PV = \text{constant} \quad (T = \text{constant}) $$
+
+- **Charles’s Law (1787)**  
+  Jacques Charles found that the **volume** of a gas is **directly proportional** to its **absolute temperature** when the **pressure is constant**:  
+
+  $$ \frac{V}{T} = \text{constant} \quad (P = \text{constant}) $$
+
+- **Gay-Lussac’s Law (early 1800s)**  
+  Joseph Louis Gay-Lussac showed that the **pressure** of a gas is **directly proportional** to its **absolute temperature** when the **volume is constant**:  
+
+  $$ \frac{P}{T} = \text{constant} \quad (V = \text{constant}) $$
+
+These laws were eventually unified into the **ideal gas law**.
+
+### Theoretical Foundation
+
+Later, the **kinetic theory of gases** provided a theoretical basis for the ideal gas law. It explained that the observed relationships arise from the motion of gas molecules, assuming:
+- Molecules move randomly and independently,
+- Collisions are elastic,
+- Intermolecular forces are negligible,
+- Molecules have negligible volume.
+
+This foundation helped solidify the ideal gas law as a cornerstone of thermodynamics and atmospheric science.
+
+```
+
+### 1.4 Hydrostatic Balance
 
 - Vertical force balance in a stationary atmosphere:
 
@@ -254,7 +426,7 @@ $$
 - **Isothermal layer** ($T = \text{const}$):
 
   $$
-  \int_{p_0}^{p(z)} \frac{dp'}{p'} = -\frac{g}{R_d\,T} \int_0^z dz'
+  \int_{p_0}^{p(z)} \frac{dp}{p} = -\frac{g}{R_d\,T} \int_0^z dz
   \quad \Rightarrow \quad
   p(z) = p_0\,\exp\left(-\frac{z}{H}\right)
   $$
@@ -278,6 +450,89 @@ $$
 - **Examples:**
   - Tropics ($T \approx 300$ K): $H \approx 8.78$ km  
   - Poles ($T \approx 250$ K): $H \approx 7.30$ km
+
+
+
+
+```{code-cell} python
+import numpy as np
+import plotly.graph_objects as go
+import ipywidgets as widgets
+from IPython.display import display
+import numpy as np
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+
+# Constants
+Rd = 287.05
+g = 9.81
+cp = 1005.0
+Lv = 2.5e6
+Rv = 461.5
+epsilon = Rd / Rv
+
+layers = [
+    (0,     -0.0065, 288.15, 101325),    # Troposphere (0–11 km)
+    (11000, 0.0,     216.65, 22632.1),   # Tropopause (11–20 km)
+    (20000, 0.001,   216.65, 5474.89),   # Lower Stratosphere (20–32 km)
+    (32000, 0.0028,  228.65, 868.02),    # Middle Stratosphere (32–47 km)
+    (47000, 0.0,     270.65, 110.91),    # Stratopause (47–51 km)
+    (51000, -0.0028, 270.65, 66.94),     # Mesosphere (51–71 km)
+    (71000, -0.002,  214.65, 3.96),      # Upper Mesosphere (71–84.852 km)
+    (84852, 0.0,     186.87, 0.3734)     # Above 84.852 km (constant T assumed)
+]
+
+# Generate altitude array
+h = np.linspace(0, 100000, 100)
+T = np.zeros_like(h)
+P = np.zeros_like(h)
+
+# Initialize
+T[0] = 288.15
+P[0] = 101325
+
+# Iterate through layers
+for i in range(1, len(h)):
+    h_i = h[i]
+    for base_h, lapse, base_T, base_P in reversed(layers):
+        if h_i >= base_h:
+            delta_h = h_i - base_h
+            if lapse == 0:
+                T[i] = base_T
+                P[i] = base_P * np.exp(-g * delta_h / (R * base_T))
+            else:
+                T[i] = base_T + lapse * delta_h
+                P[i] = base_P * (T[i] / base_T) ** (-g / (R * lapse))
+            break
+
+# Compute density from ideal gas law
+rho = P / (R * T)
+h_km = h / 1000
+
+# Create 3 subplots
+fig = make_subplots(
+    rows=1, cols=3,
+    shared_yaxes=True,
+    horizontal_spacing=0.1,
+    subplot_titles=("Temperature [K]", "Pressure [Pa]", "Density [kg/m³]")
+)
+
+# Add traces
+fig.add_trace(go.Scatter(x=T, y=h_km, mode='lines', name='Temperature', line=dict(color='firebrick')), row=1, col=1)
+fig.add_trace(go.Scatter(x=P, y=h_km, mode='lines', name='Pressure', line=dict(color='royalblue')), row=1, col=2)
+fig.add_trace(go.Scatter(x=rho, y=h_km, mode='lines', name='Density', line=dict(color='green')), row=1, col=3)
+
+# Update layout and reverse y-axis
+fig.update_layout(
+    title="US Standard Atmosphere up to 100 km",
+    height=700,
+    width=1100,
+    showlegend=False,
+)
+
+fig.show()
+```
 
 ---
 
@@ -349,6 +604,13 @@ $$
   b = g\,\frac{T_v' - T_v}{T_v}
   $$
 
+### 2.4 Thermodynamic Diagrams and Stability
+- Thermodynamic diagrams (e.g., skew-T/log-p) visually represent vertical profiles of temperature, dewpoint, and parcel paths.
+- **Moist adiabats** illustrate the ascent of saturated air.
+- The **area between parcel path and environmental temperature** can indicate:
+    - Positive area: **CAPE** (Convective Available Potential Energy)
+    - Negative area: **CIN** (Convective Inhibition)
+
 ---
 
 ## Lecture 3: Potential Temperature, Static Stability & Brunt–Väisälä
@@ -396,3 +658,13 @@ $$
   - Stratosphere: $N \sim 0.02$–0.05 s⁻¹
 
 ---
+
+
+
+> Radiative Processes & Energy Balance  
+> - **Influence on radiative fluxes:** gas absorption and emission bands (e.g., H₂O in the infrared, O₃ in the UV) determine how solar and terrestrial radiation is processed.  
+> - **Energy balance:** understanding how incoming solar energy is absorbed, scattered or transmitted, and how outgoing longwave radiation depends on greenhouse gases, is central to climate theory.
+
+
+```{admonition} Radiative–Convective Equilibrium
+In the tropics, the vertical temperature profile often reflects a **balance between convective processes (e.g., moist adiabatic ascent)** and **radiative cooling** (primarily via outgoing longwave radiation). This leads to a nearly moist-adiabatic lapse rate with strong control by deep convection.

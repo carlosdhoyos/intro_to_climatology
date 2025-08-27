@@ -22,19 +22,19 @@
      2. Compute θ and θₑ profiles, derive daily anomalies vs. 1981–2010 climatology.  
      3. Composite low-level θₑ anomalies against TRMM/IMERG precipitation.  
 
+    ![MJO1](figures/mjo1.png)
+
+    ![MJO3](figures/mjo3.png)
+
+    ![MJO4](figures/mjo4.png)
+
 2. **Decadal Trends in Tropical Static Stability**  
    - **Objective:** Detect trends in lapse rate (850–500 hPa) and CAPE over the eastern tropical Pacific (1960–2020).  
    - **Key Tasks:**  
-     1. Extract lapse rate and CAPE from IGRA2 and ERA5.  
+     1. Extract lapse rate from IGRA2 and ERA5.  
      2. Perform linear regression + Mann–Kendall tests.  
      3. Map spatial patterns and relate to ENSO indices.  
 
-3. **Climatology of the Tropopause Inversion Layer (TIL)**  
-   - **Objective:** Characterize TIL strength in the tropics and its relation to upper-tropospheric humidity.  
-   - **Key Tasks:**  
-     1. Identify TIL base/top in IGRA2 profiles (200–100 hPa).  
-     2. Compute inversion strength and correlate with MERRA-2 humidity at 300–200 hPa.  
-     3. Compare Pacific vs. Atlantic seasonal cycles.  
 
 ### Data & Tools
 - **IGRA2 POR files:**  

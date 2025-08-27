@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/carlosdavid/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+
+
+# Constants
+Rd = 287.05
+g = 9.81
+cp = 1005.0
+Lv = 2.5e6
+Rv = 461.5
+epsilon = Rd / Rv
+
+layers = [
+    (0,     -0.0065, 288.15, 101325),    # Troposphere (0–11 km)
+    (11000, 0.0,     216.65, 22632.1),   # Tropopause (11–20 km)
+    (20000, 0.001,   216.65, 5474.89),   # Lower Stratosphere (20–32 km)
+    (32000, 0.0028,  228.65, 868.02),    # Middle Stratosphere (32–47 km)
+    (47000, 0.0,     270.65, 110.91),    # Stratopause (47–51 km)
+    (51000, -0.0028, 270.65, 66.94),     # Mesosphere (51–71 km)
+    (71000, -0.002,  214.65, 3.96),      # Upper Mesosphere (71–84.852 km)
+    (84852, 0.0,     186.87, 0.3734)     # Above 84.852 km (constant T assumed)
+]
+
+# Generate altitude array
+h = np.linspace(0, 100000, 100)
+T = np.zeros_like(h)
+P = np.zeros_like(h)
+
+# Initialize
+T[0] = 288.15
+P[0] = 101325
+
+# Iterate through layers
+for i in range(1, len(h)):
+    h_i = h[i]
+    for base_h, lapse, base_T, base_P in reversed(layers):
+        if h_i >= base_h:
+            delta_h = h_i - base_h
+            if lapse == 0:
+                T[i] = base_T
+                P[i] = base_P * np.exp(-g * delta_h / (R * base_T))
+            else:
+                T[i] = base_T + lapse * delta_h
+                P[i] = base_P * (T[i] / base_T) ** (-g / (R * lapse))
+            break
+
+# Compute density from ideal gas law
+rho = P / (R * T)
+h_km = h / 1000
+
+# Create 3 subplots
+fig = make_subplots(
+    rows=1, cols=3,
+    shared_yaxes=True,
+    horizontal_spacing=0.1,
+    titles=("Temperature [K]", "Pressure [Pa]", "Density [kg/m³]")
+)
+
+# Add traces
+fig.add_trace(go.Scatter(x=T, y=h_km, mode='lines', name='Temperature', line=dict(color='firebrick')), row=1, col=1)
+fig.add_trace(go.Scatter(x=P, y=h_km, mode='lines', name='Pressure', line=dict(color='royalblue')), row=1, col=2)
+fig.add_trace(go.Scatter(x=rho, y=h_km, mode='lines', name='Density', line=dict(color='green')), row=1, col=3)
+
+# Update layout and reverse y-axis
+fig.update_layout(
+    title="US Standard Atmosphere up to 100 km",
+    height=700,
+    width=1100,
+    showlegend=False,
+)
+
+fig.show()
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[3], line 46[0m
+[1;32m     44[0m             [38;5;28;01melse[39;00m:
+[1;32m     45[0m                 T[i] [38;5;241m=[39m base_T [38;5;241m+[39m lapse [38;5;241m*[39m delta_h
+[0;32m---> 46[0m                 P[i] [38;5;241m=[39m base_P [38;5;241m*[39m (T[i] [38;5;241m/[39m base_T) [38;5;241m*[39m[38;5;241m*[39m ([38;5;241m-[39mg [38;5;241m/[39m (R [38;5;241m*[39m lapse))
+[1;32m     47[0m             [38;5;28;01mbreak[39;00m
+[1;32m     49[0m [38;5;66;03m# Compute density from ideal gas law[39;00m
+
+[0;31mNameError[0m: name 'R' is not defined
+
