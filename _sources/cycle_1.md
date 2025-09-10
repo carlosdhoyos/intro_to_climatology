@@ -453,89 +453,6 @@ This foundation helped solidify the ideal gas law as a cornerstone of thermodyna
 
 
 
-
-```{code-cell} python
-import numpy as np
-import plotly.graph_objects as go
-import ipywidgets as widgets
-from IPython.display import display
-import numpy as np
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-
-# Constants
-Rd = 287.05
-g = 9.81
-cp = 1005.0
-Lv = 2.5e6
-Rv = 461.5
-epsilon = Rd / Rv
-
-layers = [
-    (0,     -0.0065, 288.15, 101325),    # Troposphere (0–11 km)
-    (11000, 0.0,     216.65, 22632.1),   # Tropopause (11–20 km)
-    (20000, 0.001,   216.65, 5474.89),   # Lower Stratosphere (20–32 km)
-    (32000, 0.0028,  228.65, 868.02),    # Middle Stratosphere (32–47 km)
-    (47000, 0.0,     270.65, 110.91),    # Stratopause (47–51 km)
-    (51000, -0.0028, 270.65, 66.94),     # Mesosphere (51–71 km)
-    (71000, -0.002,  214.65, 3.96),      # Upper Mesosphere (71–84.852 km)
-    (84852, 0.0,     186.87, 0.3734)     # Above 84.852 km (constant T assumed)
-]
-
-# Generate altitude array
-h = np.linspace(0, 100000, 100)
-T = np.zeros_like(h)
-P = np.zeros_like(h)
-
-# Initialize
-T[0] = 288.15
-P[0] = 101325
-
-# Iterate through layers
-for i in range(1, len(h)):
-    h_i = h[i]
-    for base_h, lapse, base_T, base_P in reversed(layers):
-        if h_i >= base_h:
-            delta_h = h_i - base_h
-            if lapse == 0:
-                T[i] = base_T
-                P[i] = base_P * np.exp(-g * delta_h / (R * base_T))
-            else:
-                T[i] = base_T + lapse * delta_h
-                P[i] = base_P * (T[i] / base_T) ** (-g / (R * lapse))
-            break
-
-# Compute density from ideal gas law
-rho = P / (R * T)
-h_km = h / 1000
-
-# Create 3 subplots
-fig = make_subplots(
-    rows=1, cols=3,
-    shared_yaxes=True,
-    horizontal_spacing=0.1,
-    subplot_titles=("Temperature [K]", "Pressure [Pa]", "Density [kg/m³]")
-)
-
-# Add traces
-fig.add_trace(go.Scatter(x=T, y=h_km, mode='lines', name='Temperature', line=dict(color='firebrick')), row=1, col=1)
-fig.add_trace(go.Scatter(x=P, y=h_km, mode='lines', name='Pressure', line=dict(color='royalblue')), row=1, col=2)
-fig.add_trace(go.Scatter(x=rho, y=h_km, mode='lines', name='Density', line=dict(color='green')), row=1, col=3)
-
-# Update layout and reverse y-axis
-fig.update_layout(
-    title="US Standard Atmosphere up to 100 km",
-    height=700,
-    width=1100,
-    showlegend=False,
-)
-
-fig.show()
-```
-
----
-
 ## Lecture 2: Thermodynamic Processes & Lapse Rates
 
 ### 2.1 First Law of Thermodynamics for a Parcel
@@ -547,69 +464,7 @@ fig.show()
   \quad \alpha = \frac{1}{\rho}
   $$
 
-- **Dry adiabatic process** ($dQ = 0$):
 
-  $$
-  c_p\,dT = \frac{1}{\rho}\,dp = R_d\,T\,\frac{dp}{p}
-  $$
-
-- Leading to the dry adiabatic lapse rate:
-
-  $$
-  \frac{dT}{dz} = -\frac{g}{c_p}
-  \quad \Rightarrow \quad
-  \Gamma_d = -\frac{dT}{dz} = \frac{g}{c_p} \approx \frac{9.81}{1005} \approx 9.8\,\mathrm{K\,km^{-1}}
-  $$
-
----
-
-### 2.2 Moist (Saturated) Adiabatic Lapse Rate
-
-- In saturated conditions (latent heating):
-
-  $$
-  dQ = L_v\,dq_s = c_p\,dT - \alpha\,dp
-  $$
-
-- The moist adiabatic lapse rate is:
-
-  $$
-  \Gamma_m = -\frac{dT}{dz}
-           = \frac{g}{c_p}
-             \cdot \frac{1 + \frac{L_v\,q_s}{R_d\,T}}{1 + \frac{L_v^2\,q_s}{c_p\,R_v\,T^2}}
-  $$
-
-- **Typical values in the tropics**:  
-  $\Gamma_m \approx 4$–6 K km⁻¹
-
----
-
-### 2.3 Virtual Temperature Correction
-
-- Virtual temperature:
-
-  $$
-  T_v = T\,(1 + 0.61\,q)
-  $$
-
-- Modified ideal gas law:
-
-  $$
-  \rho = \frac{p}{R_d\,T_v}
-  $$
-
-- Buoyancy of a parcel:
-
-  $$
-  b = g\,\frac{T_v' - T_v}{T_v}
-  $$
-
-### 2.4 Thermodynamic Diagrams and Stability
-- Thermodynamic diagrams (e.g., skew-T/log-p) visually represent vertical profiles of temperature, dewpoint, and parcel paths.
-- **Moist adiabats** illustrate the ascent of saturated air.
-- The **area between parcel path and environmental temperature** can indicate:
-    - Positive area: **CAPE** (Convective Available Potential Energy)
-    - Negative area: **CIN** (Convective Inhibition)
 
 ---
 
@@ -629,19 +484,10 @@ fig.show()
   d\ln \theta = 0
   $$
 
----
-
-### 3.2 Equivalent Potential Temperature $\theta_e$
-
-- Includes moisture effect:
-
-  $$
-  \theta_e \approx \theta\,\exp\left(\frac{L_v\,r_s}{c_p\,T}\right)
-  $$
 
 ---
 
-### 3.3 Static Stability and Brunt–Väisälä Frequency
+### 3.2 Static Stability and Brunt–Väisälä Frequency
 
 - Defined as:
 
@@ -658,7 +504,6 @@ fig.show()
   - Stratosphere: $N \sim 0.02$–0.05 s⁻¹
 
 ---
-
 
 
 > Radiative Processes & Energy Balance  

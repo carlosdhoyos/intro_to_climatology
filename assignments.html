@@ -57,12 +57,14 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'assignments';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="igra.html" />
+    <link rel="next" title="IGRA" href="igra.html" />
     <link rel="prev" title="Resources" href="resources.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,7 +187,10 @@
 <li class="toctree-l1"><a class="reference internal" href="climate_system_components.html">Components of the Climate System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cycle_1.html">Tropical Thermodynamics &amp; Static Stability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Assignments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Assignments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="igra.html">IGRA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RMM.html">RMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NCEP_NCAR.html">NCEP NCAR</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -386,13 +391,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-1-tropical-thermodynamics-static-stability">Cycle 1: Tropical Thermodynamics &amp; Static Stability</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-options">Topic Options</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-tools">Data &amp; Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-options">Topic Options</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mjo-preconditioning-of-low-level-static-stability">1. MJO Preconditioning of Low-Level Static Stability</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decadal-trends-in-tropical-static-stability">2. Decadal Trends in Tropical Static Stability</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables">Deliverables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#be-prepared-to">Be Prepared To</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mjo-preconditioning-of-low-level-e">1. MJO Preconditioning of Low-Level θₑ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decadal-trends-in-tropical-static-stability">2. Decadal Trends in Tropical Static Stability</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-tropopause-inversion-layer-til">3. Climatology of the Tropopause Inversion Layer (TIL)</a></li>
 </ul>
 </li>
 </ul>
@@ -413,70 +418,40 @@ document.write(`
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Teams:</strong> Work in pairs.</p></li>
-<li><p><strong>Topic Selection:</strong> By <strong>Day 1</strong> of Cycle 1, choose <strong>one</strong> of the three state-of-the-art topics below. Sign up on the shared spreadsheet.</p></li>
-<li><p><strong>Timeline:</strong></p>
-<ul>
-<li><p><strong>Day 1:</strong> Topic sign-up &amp; kickoff</p></li>
-<li><p><strong>Day 3:</strong> Submit 1-page project proposal</p></li>
-<li><p><strong>Day 7:</strong> Interim check-in (5 min stand-up)</p></li>
-<li><p><strong>Day 14:</strong> Final deliverables due</p></li>
-</ul>
-</li>
-<li><p><strong>Starter Code:</strong> Use the provided notebook template to download and plot IGRA2 and ERA5 data.</p></li>
-<li><p><strong>Collaboration:</strong> Track your work in Git (one repo per team).</p></li>
+<li><p>Teams: Work in pairs.</p></li>
+<li><p>Topic selection: By Day 1 of Cycle 1, choose one of the topics below.</p></li>
+<li><p>Starter code: Use the provided notebook template to download and plot IGRA2 data or NCEP–NCAR reanalysis.</p></li>
+<li><p>Collaboration (optional): Track your work in Git (one repo per team).</p></li>
 </ul>
 </section>
 <section id="topic-options">
 <h3>Topic Options<a class="headerlink" href="#topic-options" title="Link to this heading">#</a></h3>
-<ol class="arabic">
-<li><p><strong>MJO Preconditioning of Low-Level θₑ</strong></p>
+<section id="mjo-preconditioning-of-low-level-static-stability">
+<h4>1. MJO Preconditioning of Low-Level Static Stability<a class="headerlink" href="#mjo-preconditioning-of-low-level-static-stability" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Objective:</strong> Quantify boundary-layer θₑ anomalies leading active/inactive MJO phases.</p></li>
-<li><p><strong>Key Tasks:</strong></p>
+<li><p><strong>Scientific importance:</strong>
+The Madden–Julian Oscillation (MJO) is the dominant mode of tropical intra-seasonal variability, driving bursts of deep convection that modulate global weather (e.g., monsoons, midlatitude teleconnections). Low-level equivalent potential temperature (θₑ) in the boundary layer reflects the reservoir of moist static energy available to fuel convection. Quantifying how θₑ anomalies lead or lag convective bursts is key to improving MJO prediction.</p></li>
+<li><p><strong>State-of-the-art aspects:</strong>
+Recent studies employ high-resolution reanalyses and satellite composites to pinpoint the preconditioning signals preceding active MJO phases (e.g., timing and vertical structure of θₑ buildup) and link them to moisture–convection coupling. Advances in machine-learning MJO forecasts increasingly use θₑ composites as input features, but fundamental understanding of the physical lead-time remains an open research frontier.</p></li>
+<li><p><strong>Objective:</strong>
+Quantify boundary-layer <span class="math notranslate nohighlight">\(\theta\)</span> profiles, <span class="math notranslate nohighlight">\(\frac{d\theta}{dz}\)</span>, and <span class="math notranslate nohighlight">\(N^2\)</span> anomalies leading active/inactive MJO phases.</p></li>
+<li><p><strong>Key tasks:</strong></p>
 <ol class="arabic simple">
-<li><p>Download IGRA2 soundings (Darwin &amp; Gan Island) for four MJO events.</p></li>
-<li><p>Compute θ and θₑ profiles, derive daily anomalies vs. 1981–2010 climatology.</p></li>
-<li><p>Composite low-level θₑ anomalies against TRMM/IMERG precipitation.</p></li>
+<li><p>Download IGRA2 soundings (choose 2–3 sites in the suggested region) for several MJO events.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(\theta\)</span> profiles, <span class="math notranslate nohighlight">\(\frac{d\theta}{dz}\)</span>, and <span class="math notranslate nohighlight">\(N^2\)</span>; derive daily anomalies.</p></li>
+<li><p>Composite low-level <span class="math notranslate nohighlight">\(\theta\)</span> profiles, <span class="math notranslate nohighlight">\(\frac{d\theta}{dz}\)</span>, and <span class="math notranslate nohighlight">\(N^2\)</span> anomalies against the RMM index.</p></li>
 </ol>
 </li>
 </ul>
 <p><img alt="MJO1" src="_images/mjo1.png" /></p>
 <p><img alt="MJO3" src="_images/mjo3.png" /></p>
 <p><img alt="MJO4" src="_images/mjo4.png" /></p>
-</li>
-<li><p><strong>Decadal Trends in Tropical Static Stability</strong></p>
 <ul class="simple">
-<li><p><strong>Objective:</strong> Detect trends in lapse rate (850–500 hPa) and CAPE over the eastern tropical Pacific (1960–2020).</p></li>
-<li><p><strong>Key Tasks:</strong></p>
-<ol class="arabic simple">
-<li><p>Extract lapse rate from IGRA2 and ERA5.</p></li>
-<li><p>Perform linear regression + Mann–Kendall tests.</p></li>
-<li><p>Map spatial patterns and relate to ENSO indices.</p></li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="data-tools">
-<h3>Data &amp; Tools<a class="headerlink" href="#data-tools" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>IGRA2 POR files:</strong></p>
+<li><p><strong>Data &amp; tools:</strong></p>
 <ul>
-<li><p>Darwin (94703099999):<br />
-<a class="reference external" href="https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/data-por/94703099999.dat.gz">https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/data-por/94703099999.dat.gz</a></p></li>
-<li><p>Gan Island (48647099999):<br />
-<a class="reference external" href="https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/data-por/48647099999.dat.gz">https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/data-por/48647099999.dat.gz</a></p></li>
+<li><p>IGRA2 files: see RMM and IGRA notebooks.</p></li>
 </ul>
 </li>
-<li><p><strong>ERA5 monthly climatology:</strong></p>
-<ul>
-<li><p>CDS API, variables: temperature, specific humidity (levels 1000–100 hPa), years 1981–2010.</p></li>
-</ul>
-</li>
-<li><p><strong>Precipitation:</strong> TRMM 3B42 V7 or GPM IMERG for MJO composite (Cycles 1 topic 1).</p></li>
-<li><p><strong>Indices:</strong> Wheeler–Hendon RMM index (NOAA PSL) for MJO phases; NINO3.4 (NOAA PSD) for ENSO.</p></li>
 <li><p><strong>Python packages:</strong></p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, <code class="docutils literal notranslate"><span class="pre">metpy</span></code>, <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code></p></li>
@@ -484,26 +459,67 @@ document.write(`
 <li><p>(optional) <code class="docutils literal notranslate"><span class="pre">siphon</span></code> for IGRA2 requests</p></li>
 </ul>
 </li>
+<li><p><strong>References:</strong></p>
+<ul>
+<li><p>Wheeler, M. C., &amp; Hendon, H. H. (2004). An all-season real-time multivariate MJO index: Development of an index for monitoring and prediction. Monthly Weather Review, 132(8), 1917–1932.</p></li>
+<li><p>Benedict, J. J., &amp; Randall, D. A. (2007). Observed characteristics of the MJO relative to maximum rainfall. Journal of the Atmospheric Sciences, 64(12), 2332–2354.</p></li>
 </ul>
+</li>
+</ul>
+</section>
+<section id="decadal-trends-in-tropical-static-stability">
+<h4>2. Decadal Trends in Tropical Static Stability<a class="headerlink" href="#decadal-trends-in-tropical-static-stability" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Scientific importance:</strong>
+Static stability (lapse rate between ~850 hPa and 500 hPa) controls the depth and vigor of tropical convection, influencing precipitation patterns, hurricane intensity, and large-scale circulation. Detecting trends in stability under global warming directly tests climate-model projections that predict a stability increase in the free troposphere, which could modulate tropical rainfall and extreme events.</p></li>
+<li><p><strong>State-of-the-art aspects:</strong>
+While reanalyses and radiosondes now span 60+ years, significant uncertainties remain in trend magnitude and statistical robustness (e.g., homogenization issues, QC of early soundings). Cutting-edge research uses advanced trend-detection methods (Mann–Kendall tests, Bayesian change-point analysis) and composite approaches to separate anthropogenic signals from natural variability (ENSO, volcanic aerosols).</p></li>
+<li><p><strong>Objective:</strong>
+Detect trends in lapse rate (850–500 hPa) and CAPE over the eastern tropical Pacific (1960–2020).</p></li>
+<li><p><strong>Key tasks:</strong></p>
+<ol class="arabic simple">
+<li><p>Extract lapse rate from IGRA2 and ERA5.</p></li>
+<li><p>Perform linear regression + Mann–Kendall tests.</p></li>
+<li><p>Map spatial patterns and relate to ENSO indices.</p></li>
+</ol>
+</li>
+<li><p><strong>Data &amp; tools:</strong></p>
+<ul>
+<li><p>NCEP/NCAR daily data:</p>
+<ul>
+<li><p>Variables: temperature (levels 1000–100 hPa), years 1981–2020.</p></li>
+</ul>
+</li>
+<li><p>Indices: SST trends, NINO3.4 (NOAA PSD) for ENSO.</p></li>
+</ul>
+</li>
+<li><p><strong>References:</strong></p>
+<ul>
+<li><p>Sobel, A. H. (2002). The ENSO signal in tropical tropospheric temperature. Journal of Climate, 15(18), 2702–2715.</p></li>
+<li><p>Grise, K. M. (2010). A global survey of static stability in the stratosphere and lower troposphere. Journal of Climate, 23(9), 2333–2349.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 <section id="deliverables">
 <h3>Deliverables<a class="headerlink" href="#deliverables" title="Link to this heading">#</a></h3>
 <ul>
-<li><p><strong>Jupyter Notebook</strong> (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>):</p>
+<li><p>Jupyter Notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>):</p>
 <ul class="simple">
-<li><p>Data download &amp; parsing</p></li>
+<li><p>Data processing (download &amp; parsing)</p></li>
 <li><p>Computation of thermodynamic variables (θ, θₑ, lapse rate, CAPE, TIL metrics)</p></li>
-<li><p>Plots: T–p profiles, θ/θₑ vertical profiles, anomaly composites, trend maps, etc.</p></li>
+<li><p>Plots: T–p profiles, θ vertical profiles, anomaly composites, trend maps, etc.</p></li>
 <li><p>Inline markdown explaining each step</p></li>
 </ul>
 </li>
-<li><p><strong>Presentation</strong> (5 min + 2 min Q&amp;A in class Week 3):</p>
+<li><p>Presentation (5 min + 2 min Q&amp;A in class Week 3):</p>
 <ol class="arabic simple">
-<li><p><strong>Introduction</strong></p></li>
-<li><p><strong>Data &amp; Methods</strong> (brief)</p></li>
-<li><p><strong>Results &amp; Interpretation</strong></p></li>
-<li><p><strong>Conclusions &amp; Future Work</strong></p></li>
-<li><p><strong>References</strong> (consistent style)</p></li>
+<li><p>Introduction</p></li>
+<li><p>Data &amp; Methods (brief)</p></li>
+<li><p>Results &amp; Interpretation</p></li>
+<li><p>Conclusions &amp; Future Work</p></li>
+<li><p>References (consistent style)</p></li>
 </ol>
 <ul class="simple">
 <li><p>Slide deck (max 5 slides) summarizing your question, methods, and key findings</p></li>
@@ -514,63 +530,9 @@ document.write(`
 <section id="be-prepared-to">
 <h3>Be Prepared To<a class="headerlink" href="#be-prepared-to" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Defend</strong> your methodological choices (data selection, QC flags, analysis window).</p></li>
-<li><p><strong>Discuss</strong> limitations and possible extensions (e.g., alternative datasets, other basins).</p></li>
-<li><p><strong>Propose</strong> follow-up analyses based on your results.</p></li>
-</ul>
-</section>
-<section id="mjo-preconditioning-of-low-level-e">
-<h3>1. MJO Preconditioning of Low-Level θₑ<a class="headerlink" href="#mjo-preconditioning-of-low-level-e" title="Link to this heading">#</a></h3>
-<p><strong>Scientific importance:</strong></p>
-<ul class="simple">
-<li><p>The Madden–Julian Oscillation (MJO) is the dominant mode of tropical intra-seasonal variability, driving bursts of deep convection that modulate global weather (e.g., monsoons, midlatitude teleconnections).</p></li>
-<li><p>Low-level equivalent potential temperature (θₑ) in the boundary layer reflects the reservoir of moist static energy available to fuel convection. Quantifying how θₑ anomalies lead or lag convective bursts is key to improving MJO prediction.</p></li>
-</ul>
-<p><strong>State-of-the-art aspects:</strong></p>
-<ul class="simple">
-<li><p>Recent studies employ high-resolution reanalyses and satellite composites to pinpoint the preconditioning signals preceding active MJO phases (e.g., timing and vertical structure of θₑ buildup) and link them to moisture–convection coupling.</p></li>
-<li><p>Advances in machine-learning MJO forecasts increasingly use θₑ composites as input features, but fundamental understanding of the physical lead-time remains an open research frontier.</p></li>
-</ul>
-<p><strong>References:</strong></p>
-<ul class="simple">
-<li><p>Wheeler, M. C., &amp; Hendon, H. H. (2004). <em>An all-season real-time multivariate MJO index: Development of an index for monitoring and prediction.</em> <strong>Monthly Weather Review</strong>, 132(8), 1917–1932. :contentReference[oaicite:0]{index=0}</p></li>
-<li><p>Benedict, J. J., &amp; Randall, D. A. (2007). <em>Observed characteristics of the MJO relative to maximum rainfall.</em> <strong>Journal of the Atmospheric Sciences</strong>, 64(12), 2332–2354. :contentReference[oaicite:1]{index=1}</p></li>
-</ul>
-</section>
-<section id="decadal-trends-in-tropical-static-stability">
-<h3>2. Decadal Trends in Tropical Static Stability<a class="headerlink" href="#decadal-trends-in-tropical-static-stability" title="Link to this heading">#</a></h3>
-<p><strong>Scientific importance:</strong></p>
-<ul class="simple">
-<li><p>Static stability (lapse rate between ~850 hPa and 500 hPa) controls the depth and vigor of tropical convection, influencing precipitation patterns, hurricane intensity, and large-scale circulation.</p></li>
-<li><p>Detecting trends in stability under global warming directly tests climate-model projections that predict a “stability increase” in the free troposphere, which could modulate tropical rainfall and extreme events.</p></li>
-</ul>
-<p><strong>State-of-the-art aspects:</strong></p>
-<ul class="simple">
-<li><p>While reanalyses and radiosondes now span 60+ years, significant uncertainties remain in trend magnitude and statistical robustness (e.g., homogenization issues, QC of early soundings).</p></li>
-<li><p>Cutting-edge research uses advanced trend-detection methods (Mann–Kendall tests, Bayesian change-point analysis) and composite approaches to separate anthropogenic signals from natural variability (ENSO, volcanic aerosols).</p></li>
-</ul>
-<p><strong>References:</strong></p>
-<ul class="simple">
-<li><p>Sobel, A. H. (2002). <em>The ENSO signal in tropical tropospheric temperature.</em> <strong>Journal of Climate</strong>, 15(18), 2702–2715. :contentReference[oaicite:2]{index=2}</p></li>
-<li><p>Grise, K. M. (2010). <em>A global survey of static stability in the stratosphere and lower troposphere.</em> <strong>Journal of Climate</strong>, 23(9), 2333–2349. :contentReference[oaicite:3]{index=3}</p></li>
-</ul>
-</section>
-<section id="climatology-of-the-tropopause-inversion-layer-til">
-<h3>3. Climatology of the Tropopause Inversion Layer (TIL)<a class="headerlink" href="#climatology-of-the-tropopause-inversion-layer-til" title="Link to this heading">#</a></h3>
-<p><strong>Scientific importance:</strong></p>
-<ul class="simple">
-<li><p>The Tropopause Inversion Layer—an increase in temperature just below the cold-point tropopause—modulates stratosphere–troposphere exchange and the vertical distribution of water vapor, a powerful greenhouse gas.</p></li>
-<li><p>Understanding TIL variability is crucial for accurately representing upper-tropospheric humidity in climate models, which strongly affects radiative forcing and stratospheric water vapor sources.</p></li>
-</ul>
-<p><strong>State-of-the-art aspects:</strong></p>
-<ul class="simple">
-<li><p>Recent satellite (e.g., MLS, SABER) and high-resolution reanalysis products enable global mapping of TIL strength and height with unprecedented vertical resolution.</p></li>
-<li><p>Current research focuses on linking TIL variability to deep-convection overshoots, gravity-wave breaking, and lower-stratospheric humidity trends under climate change.</p></li>
-</ul>
-<p><strong>References:</strong></p>
-<ul class="simple">
-<li><p>Birner, T., Sankey, D., &amp; Shepherd, T. G. (2006). <em>The tropopause inversion layer in models and analyses.</em> <strong>Geophysical Research Letters</strong>, 33(14), L14804. doi:10.1029/2006GL026549 :contentReference[oaicite:4]{index=4}</p></li>
-<li><p>Pan, L. L., &amp; Munchak, L. A. (2011). <em>Relationship of cloud top to the tropopause and jet structure from CALIPSO data.</em> <strong>Journal of Geophysical Research</strong>, 116, D12201. doi:10.1029/2010JD015462 :contentReference[oaicite:5]{index=5}</p></li>
+<li><p>Defend your methodological choices (data selection, QC flags, analysis window).</p></li>
+<li><p>Discuss limitations and possible extensions (e.g., alternative datasets, other basins).</p></li>
+<li><p>Propose follow-up analyses based on your results.</p></li>
 </ul>
 </section>
 </section>
@@ -622,7 +584,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">IGRA</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -644,13 +606,13 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-1-tropical-thermodynamics-static-stability">Cycle 1: Tropical Thermodynamics &amp; Static Stability</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-options">Topic Options</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-tools">Data &amp; Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-options">Topic Options</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mjo-preconditioning-of-low-level-static-stability">1. MJO Preconditioning of Low-Level Static Stability</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decadal-trends-in-tropical-static-stability">2. Decadal Trends in Tropical Static Stability</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables">Deliverables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#be-prepared-to">Be Prepared To</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mjo-preconditioning-of-low-level-e">1. MJO Preconditioning of Low-Level θₑ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decadal-trends-in-tropical-static-stability">2. Decadal Trends in Tropical Static Stability</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-tropopause-inversion-layer-til">3. Climatology of the Tropopause Inversion Layer (TIL)</a></li>
 </ul>
 </li>
 </ul>
