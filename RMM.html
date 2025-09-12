@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="NCEP NCAR" href="NCEP_NCAR.html" />
+    <link rel="next" title="Stability Index" href="stability.html" />
     <link rel="prev" title="IGRA" href="igra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,7 +188,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="assignments.html">Assignments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="igra.html">IGRA</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">RMM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="NCEP_NCAR.html">NCEP NCAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stability.html">Stability Index</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -633,92 +634,6 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the relative path from the notebook location</span>
-<span class="n">rmm_path</span> <span class="o">=</span> <span class="s2">&quot;data/rmm.74toRealtime.txt&quot;</span>  <span class="c1"># absolute also works if you prefer</span>
-<span class="n">rmm</span> <span class="o">=</span> <span class="n">load_rmm_from_file</span><span class="p">(</span><span class="n">rmm_path</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_rmm_phase_space</span><span class="p">(</span><span class="n">rmm</span><span class="p">,</span> <span class="n">highlight_days</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Optional: inspect last few days</span>
-<span class="n">rmm</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>rmm1</th>
-      <th>rmm2</th>
-      <th>phase</th>
-      <th>amplitude</th>
-    </tr>
-    <tr>
-      <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2024-02-20</th>
-      <td>-0.305918</td>
-      <td>0.305419</td>
-      <td>8</td>
-      <td>0.432281</td>
-    </tr>
-    <tr>
-      <th>2024-02-21</th>
-      <td>0.103033</td>
-      <td>0.071931</td>
-      <td>5</td>
-      <td>0.125658</td>
-    </tr>
-    <tr>
-      <th>2024-02-22</th>
-      <td>0.236122</td>
-      <td>0.248544</td>
-      <td>6</td>
-      <td>0.342823</td>
-    </tr>
-    <tr>
-      <th>2024-02-23</th>
-      <td>0.201856</td>
-      <td>0.325106</td>
-      <td>6</td>
-      <td>0.382675</td>
-    </tr>
-    <tr>
-      <th>2024-02-24</th>
-      <td>-0.003146</td>
-      <td>0.128460</td>
-      <td>7</td>
-      <td>0.128498</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -761,11 +676,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="NCEP_NCAR.html"
+       href="stability.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NCEP NCAR</p>
+        <p class="prev-next-title">Stability Index</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

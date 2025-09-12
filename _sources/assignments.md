@@ -34,6 +34,7 @@
 
 - **Data & tools:**
   - IGRA2 files: see RMM and IGRA notebooks.
+  - RMM index (local): [data/rmm.74toRealtime.txt](data/rmm.74toRealtime.txt)
 
 - **Python packages:**
   - `pandas`, `xarray`, `metpy`, `cdsapi`
@@ -87,4 +88,3 @@
 - Defend your methodological choices (data selection, QC flags, analysis window).
 - Discuss limitations and possible extensions (e.g., alternative datasets, other basins).
 - Propose follow-up analyses based on your results.
-

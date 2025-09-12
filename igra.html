@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="NCEP NCAR" href="NCEP_NCAR.html" />
+    <link rel="next" title="RMM" href="RMM.html" />
     <link rel="prev" title="Assignments" href="assignments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,7 +187,9 @@
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="assignments.html">Assignments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">IGRA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="NCEP_NCAR.html">NCEP NCAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RMM.html">RMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stability.html">Stability Index</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
@@ -443,14 +445,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read as whitespace-delimited file</span>
-<span class="n">stations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+<span class="c1"># stations = pd.read_csv(</span>
+<span class="c1">#     station_list_path,</span>
+<span class="c1">#     delim_whitespace=True,</span>
+<span class="c1">#     header=None,</span>
+<span class="c1">#     usecols=[0,1,2,3,4,5,6],</span>
+<span class="c1">#     names=[&quot;id&quot;, &quot;lat&quot;, &quot;lon&quot;, &quot;elev_m&quot;, &quot;name1&quot;, &quot;name2&quot;, &quot;name3&quot;],</span>
+<span class="c1">#     engine=&quot;python&quot;</span>
+<span class="c1"># )</span>
+
+<span class="n">stations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span>
     <span class="n">station_list_path</span><span class="p">,</span>
-    <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="s2">&quot;elev_m&quot;</span><span class="p">,</span> <span class="s2">&quot;name1&quot;</span><span class="p">,</span> <span class="s2">&quot;name2&quot;</span><span class="p">,</span> <span class="s2">&quot;name3&quot;</span><span class="p">],</span>
-    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span>
-<span class="p">)</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;elev_m&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;datei&#39;</span><span class="p">,</span><span class="s1">&#39;datef&#39;</span><span class="p">,</span><span class="s1">&#39;records&#39;</span><span class="p">])</span>
 
 <span class="c1"># The station name may be split across multiple columns, so join them</span>
 <span class="n">stations</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[[</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;name2&quot;</span><span class="p">,</span><span class="s2">&quot;name3&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -461,8 +468,41 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/wb/w8f2wd_517gdp8khx2rp4pl00000gp/T/ipykernel_30810/1844851236.py:2: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
-  stations = pd.read_csv(
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">stations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">station_list_path</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;elev_m&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;datei&#39;</span><span class="p">,</span><span class="s1">&#39;datef&#39;</span><span class="p">,</span><span class="s1">&#39;records&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># The station name may be split across multiple columns, so join them</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">stations</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[[</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;name2&quot;</span><span class="p">,</span><span class="s2">&quot;name3&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="c1"># Keep only relevant columns</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">stations</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span><span class="s2">&quot;elev_m&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+
+<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/frame.py:4108,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4106</span>     <span class="k">if</span> <span class="n">is_iterator</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">4107</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">4108</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">4110</span> <span class="c1"># take() does not accept boolean indexers</span>
+<span class="g g-Whitespace">   </span><span class="mi">4111</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/indexes/base.py:6200,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6197</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6198</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6200</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6202</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6203</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6204</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
+
+<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/indexes/base.py:6249,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6247</span> <span class="k">if</span> <span class="n">nmissing</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6248</span>     <span class="k">if</span> <span class="n">nmissing</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">6249</span>         <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6251</span>     <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="g g-Whitespace">   </span><span class="mi">6252</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;None of [Index([&#39;name1&#39;, &#39;name2&#39;, &#39;name3&#39;], dtype=&#39;object&#39;)] are in the [columns]&quot;
 </pre></div>
 </div>
 </div>
@@ -473,125 +513,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>lat</th>
-      <th>lon</th>
-      <th>elev_m</th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ACM00078861</td>
-      <td>17.1170</td>
-      <td>-61.7830</td>
-      <td>10.0</td>
-      <td>COOLIDGE FIELD (UA)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AEM00041217</td>
-      <td>24.4333</td>
-      <td>54.6500</td>
-      <td>16.0</td>
-      <td>ABU DHABI INTERNATIONAL</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>AEXUAE05467</td>
-      <td>25.2500</td>
-      <td>55.3700</td>
-      <td>4.0</td>
-      <td>SHARJAH 1935 1942</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AFM00040911</td>
-      <td>36.7000</td>
-      <td>67.2000</td>
-      <td>378.0</td>
-      <td>MAZAR-I-SHARIF 2010 2014</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>AFM00040913</td>
-      <td>36.6667</td>
-      <td>68.9167</td>
-      <td>433.0</td>
-      <td>KUNDUZ 2010 2013</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2918</th>
-      <td>ZZXUAICE022</td>
-      <td>-98.8888</td>
-      <td>-998.8888</td>
-      <td>-998.8</td>
-      <td>NP22 1974 1982</td>
-    </tr>
-    <tr>
-      <th>2919</th>
-      <td>ZZXUAICE026</td>
-      <td>-98.8888</td>
-      <td>-998.8888</td>
-      <td>-998.8</td>
-      <td>NP26 1983 1986</td>
-    </tr>
-    <tr>
-      <th>2920</th>
-      <td>ZZXUAICE028</td>
-      <td>-98.8888</td>
-      <td>-998.8888</td>
-      <td>-998.8</td>
-      <td>NP28 1986 1988</td>
-    </tr>
-    <tr>
-      <th>2921</th>
-      <td>ZZXUAICE030</td>
-      <td>-98.8888</td>
-      <td>-998.8888</td>
-      <td>-998.8</td>
-      <td>NP30 1988 1990</td>
-    </tr>
-    <tr>
-      <th>2922</th>
-      <td>ZZXUAICE031</td>
-      <td>-98.8888</td>
-      <td>-998.8888</td>
-      <td>-998.8</td>
-      <td>NP31 1989 1991</td>
-    </tr>
-  </tbody>
-</table>
-<p>2923 rows × 5 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -605,125 +526,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>lat</th>
-      <th>lon</th>
-      <th>elev_m</th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>BXM00096315</td>
-      <td>4.9333</td>
-      <td>114.9333</td>
-      <td>22.0</td>
-      <td>BRUNEI AIRPORT 1981</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>BXM00096323</td>
-      <td>4.5830</td>
-      <td>114.2000</td>
-      <td>3.0</td>
-      <td>KUALA BELAIT 1999</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>CHM00056029</td>
-      <td>0.0033</td>
-      <td>96.9667</td>
-      <td>3716.9</td>
-      <td>YUSHU (56029-0) 1959</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>CHM00056080</td>
-      <td>0.0035</td>
-      <td>102.9000</td>
-      <td>2910.0</td>
-      <td>HEZUO 1960 2025</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>FMM00091434</td>
-      <td>1.0830</td>
-      <td>154.7670</td>
-      <td>3.0</td>
-      <td>KAPINGAMARANGI ATOL 1958</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>PPM00092044</td>
-      <td>-2.0500</td>
-      <td>147.4167</td>
-      <td>4.0</td>
-      <td>MOMOTE W.O. 1950</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>PPM00094076</td>
-      <td>-2.5670</td>
-      <td>150.8170</td>
-      <td>7.0</td>
-      <td>USAF-DS3-656 1992 1994</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>PPM00094085</td>
-      <td>-4.2170</td>
-      <td>152.1830</td>
-      <td>9.0</td>
-      <td>USAF-DS3-657 1950 1988</td>
-    </tr>
-    <tr>
-      <th>67</th>
-      <td>RSM00031770</td>
-      <td>0.0049</td>
-      <td>140.3000</td>
-      <td>20.5</td>
-      <td>SOVETSKAYA GAVAN 1964</td>
-    </tr>
-    <tr>
-      <th>68</th>
-      <td>SNM00048698</td>
-      <td>1.3679</td>
-      <td>103.9824</td>
-      <td>14.0</td>
-      <td>SINGAPORE/CHANGI AIRPORT 1955</td>
-    </tr>
-  </tbody>
-</table>
-<p>69 rows × 5 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,31 +548,6 @@ document.write(`
 <span class="n">lines</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of lines:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First few lines:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[:</span><span class="mi">15</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading: BXM00096315 BRUNEI AIRPORT 1981
-https://www.ncei.noaa.gov/pub/data/igra/data/data-por/BXM00096315-data.txt.zip
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of lines: 1550233
-First few lines:
- #BXM00096315 1981 01 01 12 9999    3          usaf-ds3   49333  1149333
-30 -9999  -9999   300 -9999 -9999 -9999     0    30 
-30 -9999  -9999   600 -9999 -9999 -9999   350    25 
-30 -9999  -9999   900 -9999 -9999 -9999   335    20 
-#BXM00096315 1981 01 02 00 9999    3          usaf-ds3   49333  1149333
-30 -9999  -9999   300 -9999 -9999 -9999   170    25 
-30 -9999  -9999   600 -9999 -9999 -9999    90     5 
-30 -9999  -9999  2400 -9999 -9999 -9999   100    30 
-#BXM00096315 1981 01 04 12 9999    5          usaf-ds3   49333  1149333
-31 -9999  -9999     5 -9999 -9999 -9999   210    30 
-30 -9999  -9999   300 -9999 -9999 -9999   215   103 
-30 -9999  -9999   600 -9999 -9999 -9999   230    41 
-30 -9999  -9999   900 -9999 -9999 -9999   230    82 
-30 -9999  -9999  1500 -9999 -9999 -9999   230    51 
-#BXM00096315 1981 01 05 00 9999    4          usaf-ds3   49333  1149333
 </pre></div>
 </div>
 </div>
@@ -812,16 +589,17 @@ First few lines:
     <span class="k">return</span> <span class="n">stn_id</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">approx_levels</span>
 
 <span class="k">def</span> <span class="nf">parse_level_line</span><span class="p">(</span><span class="n">ln</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;level_type&quot;</span><span class="p">:</span>     <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span>   <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>  <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">allow_signed</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-        <span class="s2">&quot;pressure_hPa&quot;</span><span class="p">:</span>   <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">17</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">),</span>
-        <span class="s2">&quot;height_m&quot;</span><span class="p">:</span>       <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">24</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-        <span class="s2">&quot;temp_C&quot;</span><span class="p">:</span>         <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">31</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">),</span>
-        <span class="s2">&quot;dewpoint_C&quot;</span><span class="p">:</span>     <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">38</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">),</span>
-        <span class="s2">&quot;rh_pct&quot;</span><span class="p">:</span>         <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">38</span><span class="p">:</span><span class="mi">43</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-        <span class="s2">&quot;wind_dir_deg&quot;</span><span class="p">:</span>   <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">43</span><span class="p">:</span><span class="mi">49</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-        <span class="s2">&quot;wind_speed_mps&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">49</span><span class="p">:</span><span class="mi">55</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">),</span>
-    <span class="p">}</span>
+   <span class="k">return</span> <span class="p">{</span>
+       <span class="s2">&quot;level_type1&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+       <span class="s2">&quot;level_type2&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+       <span class="s2">&quot;pressure_hPa&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+       <span class="s2">&quot;height_m&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+       <span class="s2">&quot;temp_C&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">27</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+       <span class="s2">&quot;rh_pct&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">28</span><span class="p">:</span><span class="mi">33</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+       <span class="s2">&quot;dewpoint_C&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">34</span><span class="p">:</span><span class="mi">39</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+       <span class="s2">&quot;wind_dir_deg&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">45</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+       <span class="s2">&quot;wind_speed_mps&quot;</span><span class="p">:</span> <span class="n">_to_num</span><span class="p">(</span><span class="n">ln</span><span class="p">[</span><span class="mi">46</span><span class="p">:</span><span class="mi">51</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">missing</span><span class="o">=-</span><span class="mi">9999</span><span class="p">),</span>
+   <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">split_into_soundings</span><span class="p">(</span><span class="n">lines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="n">soundings</span> <span class="o">=</span> <span class="p">[]</span>
@@ -941,106 +719,11 @@ First few lines:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">catalog</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">build_catalog_and_metadata</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">drop_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[7], line 102,</span> in <span class="ni">build_catalog_and_metadata</span><span class="nt">(lines, drop_empty)</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;full&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="c1"># now drop rows that are completely useless across all key fields</span>
-<span class="ne">--&gt; </span><span class="mi">102</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pressure_hPa&quot;</span><span class="p">,</span><span class="s2">&quot;height_m&quot;</span><span class="p">,</span><span class="s2">&quot;temp_C&quot;</span><span class="p">,</span><span class="s2">&quot;dewpoint_C&quot;</span><span class="p">,</span><span class="s2">&quot;wind_dir_deg&quot;</span><span class="p">,</span><span class="s2">&quot;wind_speed_mps&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span> <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="c1"># sort by pressure if present; else by height if present</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pressure_hPa&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/frame.py:6667,</span> in <span class="ni">DataFrame.dropna</span><span class="nt">(self, axis, how, thresh, subset, inplace, ignore_index)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6665</span>     <span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">subset</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">6666</span> <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="n">agg_axis</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">6667</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_indexer_for</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6668</span> <span class="n">check</span> <span class="o">=</span> <span class="n">indices</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">6669</span> <span class="k">if</span> <span class="n">check</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/indexes/base.py:6182,</span> in <span class="ni">Index.get_indexer_for</span><span class="nt">(self, target)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6164</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6165</span><span class="sd"> Guaranteed return of an indexer even when non-unique.</span>
-<span class="g g-Whitespace">   </span><span class="mi">6166</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6179</span><span class="sd"> array([0, 2])</span>
-<span class="g g-Whitespace">   </span><span class="mi">6180</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6181</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index_as_unique</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">6182</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6183</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer_non_unique</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6184</span> <span class="k">return</span> <span class="n">indexer</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/indexes/base.py:3880,</span> in <span class="ni">Index.get_indexer</span><span class="nt">(self, target, method, limit, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3878</span> <span class="n">method</span> <span class="o">=</span> <span class="n">clean_reindex_fill_method</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3879</span> <span class="n">orig_target</span> <span class="o">=</span> <span class="n">target</span>
-<span class="ne">-&gt; </span><span class="mi">3880</span> <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maybe_cast_listlike_indexer</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3882</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_method</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3884</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index_as_unique</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/indexes/base.py:6683,</span> in <span class="ni">Index._maybe_cast_listlike_indexer</span><span class="nt">(self, target)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6679</span> <span class="k">def</span> <span class="nf">_maybe_cast_listlike_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Index</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6680</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6681</span><span class="sd">     Analogue to maybe_cast_indexer for get_indexer instead of get_loc.</span>
-<span class="g g-Whitespace">   </span><span class="mi">6682</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">6683</span>     <span class="k">return</span> <span class="n">ensure_index</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/indexes/base.py:7642,</span> in <span class="ni">ensure_index</span><span class="nt">(index_like, copy)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7637</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">index_like</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># noqa: E721</span>
-<span class="g g-Whitespace">   </span><span class="mi">7638</span>     <span class="c1"># must check for exactly list here because of strict type</span>
-<span class="g g-Whitespace">   </span><span class="mi">7639</span>     <span class="c1"># check in clean_index_list</span>
-<span class="g g-Whitespace">   </span><span class="mi">7640</span>     <span class="n">index_like</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">index_like</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">7642</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_like</span><span class="p">)</span> <span class="ow">and</span> <span class="n">lib</span><span class="o">.</span><span class="n">is_all_arraylike</span><span class="p">(</span><span class="n">index_like</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">7643</span>     <span class="kn">from</span> <span class="nn">pandas.core.indexes.multi</span> <span class="kn">import</span> <span class="n">MultiIndex</span>
-<span class="g g-Whitespace">   </span><span class="mi">7645</span>     <span class="k">return</span> <span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">(</span><span class="n">index_like</span><span class="p">)</span>
-
-<span class="nn">File lib.pyx:849,</span> in <span class="ni">pandas._libs.lib.is_all_arraylike</span><span class="nt">()</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/dtypes/generic.py:44,</span> in <span class="ni">create_pandas_abc_type.&lt;locals&gt;._instancecheck</span><span class="nt">(cls, inst)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="nd">@classmethod</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">def</span> <span class="nf">_instancecheck</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">inst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">44</span>     <span class="k">return</span> <span class="n">_check</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/dtypes/generic.py:38,</span> in <span class="ni">create_pandas_abc_type.&lt;locals&gt;._check</span><span class="nt">(inst)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="s2">&quot;_typ&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">comp</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/jupyterbook_env/lib/python3.11/site-packages/pandas/core/dtypes/generic.py:42,</span> in <span class="ni">create_pandas_abc_type.&lt;locals&gt;._instancecheck</span><span class="nt">(cls, inst)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="s2">&quot;_typ&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">comp</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="c1"># https://github.com/python/mypy/issues/1006</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="c1"># error: &#39;classmethod&#39; used with a non-method</span>
-<span class="ne">---&gt; </span><span class="mi">42</span> <span class="nd">@classmethod</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">def</span> <span class="nf">_instancecheck</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">inst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="k">return</span> <span class="n">_check</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="nd">@classmethod</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">def</span> <span class="nf">_subclasscheck</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">inst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="c1"># Raise instead of returning False</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="c1"># This is consistent with default __subclasscheck__ behavior</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Catalog size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span><span class="si">}</span><span class="s2">  |  Meta rows: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>status
-winds_only       28888
-pressure_only    20790
-full               919
-Name: count, dtype: int64
-Catalog size: 50597  |  Meta rows: 50597
 </pre></div>
 </div>
 </div>
@@ -1051,20 +734,10 @@ Catalog size: 50597  |  Meta rows: 50597
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50597 soundings parsed
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
 </pre></div>
 </div>
 </div>
@@ -1084,12 +757,6 @@ Catalog size: 50597  |  Meta rows: 50597
 <span class="c1">#print(meta_full.head())</span>
 <span class="n">example_key</span> <span class="o">=</span> <span class="n">meta_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;catalog_key&quot;</span><span class="p">]</span>
 <span class="c1">#print(catalog_full[example_key].head())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original catalog: 50597 soundings
-Full-only subset: 919 soundings
 </pre></div>
 </div>
 </div>
@@ -1125,8 +792,6 @@ Full-only subset: 919 soundings
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 </section>
@@ -1171,11 +836,11 @@ Full-only subset: 919 soundings
       </div>
     </a>
     <a class="right-next"
-       href="NCEP_NCAR.html"
+       href="RMM.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NCEP NCAR</p>
+        <p class="prev-next-title">RMM</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
